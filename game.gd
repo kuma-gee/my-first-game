@@ -2,6 +2,7 @@ extends Node2D
 
 const PLACE_TILE_DELAY = 0.1
 const PLACE_PLAYER_DELAY = 0.5
+const PLAYER_MOVEMENT_DELAY = 2.0
 
 @onready var map := $TileMap
 @onready var anim := $AnimationPlayer
@@ -28,6 +29,9 @@ func build_first_platform():
 	await _wait(PLACE_PLAYER_DELAY)
 	anim.play("place_player")
 
+func improve_player_movement():
+	await _wait(PLAYER_MOVEMENT_DELAY)
+	anim.play("enable_player_move")
 
 func _on_player_left_screen():
 	cursor.catch_player(player)

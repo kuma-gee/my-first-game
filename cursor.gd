@@ -1,6 +1,7 @@
 extends Area2D
 
-@export var speed := 800
+@export var speed := 600
+@export var catch_speed := 1200
 @export var default_player_pos: Marker2D
 
 var catching_enabled = false
@@ -13,13 +14,13 @@ var original_pos = null
 func _physics_process(delta):
 	if catching_player == null or not catching_enabled:
 		if original_pos != null:
-			_move_to(original_pos, delta)
+			_move_to(original_pos, speed, delta)
 			if _is_close_to(original_pos):
 				original_pos = null
 		return
 	
 	if caught:
-		_move_to(default_player_pos.global_position, delta)
+		_move_to(default_player_pos.global_position, speed, delta)
 		catching_player.global_position = global_position
 		
 		if _is_close_to(default_player_pos.global_position):
@@ -27,9 +28,9 @@ func _physics_process(delta):
 			caught = false
 			catching_player = null
 	else:
-		_move_to(catching_player.global_position, delta)
+		_move_to(catching_player.global_position, catch_speed, delta)
 
-func _move_to(pos: Vector2, delta: float):
+func _move_to(pos: Vector2, speed: float, delta: float):
 	var dir = global_position.direction_to(pos)
 	global_position += dir * speed * delta
 

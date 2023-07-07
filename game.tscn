@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dd6npanx4gou5"]
+[gd_scene load_steps=11 format=3 uid="uid://dd6npanx4gou5"]
 
 [ext_resource type="TileSet" uid="uid://2lq3lykosfwx" path="res://tileset.tres" id="1_7b0gp"]
 [ext_resource type="Script" path="res://game.gd" id="1_ms0dt"]
@@ -66,6 +66,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Player:speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [100]
 }
 
 [sub_resource type="Animation" id="Animation_bec8w"]
@@ -167,6 +179,20 @@ tracks/6/keys = {
 "method": &"enable_catch"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"improve_player_movement"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_5b5px"]
 resource_name = "start"
@@ -210,9 +236,46 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_yd82p"]
+resource_name = "enable_player_move"
+length = 6.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"enable_flip"
+}, {
+"args": [],
+"method": &"enable_accel"
+}, {
+"args": [],
+"method": &"enable_anim"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3, 4.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [400, 800, 200]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_onv6d"]
 _data = {
 "RESET": SubResource("Animation_crjna"),
+"enable_player_move": SubResource("Animation_yd82p"),
 "place_player": SubResource("Animation_bec8w"),
 "start": SubResource("Animation_5b5px")
 }
@@ -253,6 +316,7 @@ libraries = {
 [node name="Player" parent="." instance=ExtResource("4_36mn7")]
 visible = false
 position = Vector2(533, 57)
+speed = 100
 
 [node name="DefaultPlayerPos" type="Marker2D" parent="."]
 position = Vector2(0, 86)
