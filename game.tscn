@@ -1,0 +1,281 @@
+[gd_scene load_steps=10 format=3 uid="uid://dd6npanx4gou5"]
+
+[ext_resource type="TileSet" uid="uid://2lq3lykosfwx" path="res://tileset.tres" id="1_7b0gp"]
+[ext_resource type="Script" path="res://game.gd" id="1_ms0dt"]
+[ext_resource type="PackedScene" uid="uid://hyisjlhjpgme" path="res://player.tscn" id="4_36mn7"]
+[ext_resource type="PackedScene" uid="uid://cp87el1f7kgw0" path="res://cursor.tscn" id="4_e0175"]
+
+[sub_resource type="Animation" id="Animation_crjna"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.301961, 0.301961, 0.301961, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlacePlayerPath/PathFollow2D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlacePlayerPath/PathFollow2D/RemoteTransform2D:remote_path")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [NodePath("Player")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cursor:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_bec8w"]
+resource_name = "place_player"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlacePlayerPath/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 2, 2.7, 3.3, 4.1, 4.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.66, 0.66, 1.0, 0.6632, 0.6632, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlacePlayerPath/PathFollow2D/RemoteTransform2D:remote_path")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2.7, 3.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [NodePath("../../../Player"), NodePath(""), NodePath("../../../Player"), NodePath("")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.3, 3.7, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"enable_gravity"
+}, {
+"args": [],
+"method": &"enable_collision"
+}, {
+"args": [],
+"method": &"enable_input"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlacePlayerPath")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cursor:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cursor")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_catch"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5b5px"]
+resource_name = "start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.301961, 0.301961, 0.301961, 1), Color(0.0588235, 0.0588235, 0.0941176, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"build_first_platform"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cursor:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_onv6d"]
+_data = {
+"RESET": SubResource("Animation_crjna"),
+"place_player": SubResource("Animation_bec8w"),
+"start": SubResource("Animation_5b5px")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_qawq0"]
+_data = {
+"points": PackedVector2Array(29.6985, -64.3467, -29.6985, 64.3467, 533, -11, 131.522, 0, -131.522, 0, 294, 96, 0, 0, 0, 0, 36, 1, 0, 0, 0, 0, 36, 284)
+}
+point_count = 4
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_ms0dt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.301961, 0.301961, 0.301961, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_7b0gp")
+format = 2
+layer_0/tile_data = PackedInt32Array(131072, 131073, 2, 131073, 131073, 2, 131074, 131073, 2, 131075, 131073, 2, 131076, 131073, 2, 131077, 196609, 2, 196607, 131073, 2, 196606, 131073, 2, 196605, 131073, 2, 196604, 131073, 2, 196603, 131073, 2, 196602, 65537, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "start"
+libraries = {
+"": SubResource("AnimationLibrary_onv6d")
+}
+
+[node name="Player" parent="." instance=ExtResource("4_36mn7")]
+visible = false
+position = Vector2(533, 57)
+
+[node name="DefaultPlayerPos" type="Marker2D" parent="."]
+position = Vector2(0, 86)
+
+[node name="Cursor" parent="." node_paths=PackedStringArray("default_player_pos") instance=ExtResource("4_e0175")]
+visible = false
+position = Vector2(41, 362)
+default_player_pos = NodePath("../DefaultPlayerPos")
+
+[node name="PlacePlayerPath" type="Path2D" parent="."]
+position = Vector2(0, 68)
+curve = SubResource("Curve2D_qawq0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PlacePlayerPath"]
+position = Vector2(36, 284)
+progress = 838.458
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlacePlayerPath/PathFollow2D"]
+remote_path = NodePath("Player")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="PlacePlayerPath/PathFollow2D"]
+position = Vector2(5, 10)
+remote_path = NodePath("../../../Cursor")
+
+[connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
