@@ -193,6 +193,18 @@ tracks/7/keys = {
 "method": &"improve_player_movement"
 }]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Player:speed")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [400]
+}
 
 [sub_resource type="Animation" id="Animation_5b5px"]
 resource_name = "start"
@@ -303,12 +315,13 @@ color = Color(0.301961, 0.301961, 0.301961, 1)
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_7b0gp")
 format = 2
-layer_0/tile_data = PackedInt32Array(131072, 131073, 2, 131073, 131073, 2, 131074, 131073, 2, 131075, 131073, 2, 131076, 131073, 2, 131077, 196609, 2, 196607, 131073, 2, 196606, 131073, 2, 196605, 131073, 2, 196604, 131073, 2, 196603, 131073, 2, 196602, 65537, 2)
+layer_0/tile_data = PackedInt32Array(131072, 131073, 0, 131073, 131073, 0, 131074, 131073, 0, 131075, 131073, 0, 131076, 131073, 0, 196607, 131073, 0, 196606, 131073, 0, 196605, 131073, 0, 196604, 131073, 0, 196603, 131073, 0, 196602, 131073, 0, 262138, 131073, 2, 262139, 131073, 2, 262140, 131073, 2, 262141, 131073, 2, 262142, 131073, 2, 262143, 131073, 2, 196608, 131073, 2, 196609, 131073, 2, 196610, 131073, 2, 196611, 131073, 2, 196612, 131073, 2, 196613, 131073, 2, 131077, 327681, 1, 65541, 65537, 1, 5, 65537, 1, -262139, 65537, 1, -196603, 65537, 1, -131067, 65537, 1, -65531, 65537, 1, -327675, 327681, 2, -327676, 131073, 2, -262146, 131073, 2, -262145, 131073, 2, -327680, 131073, 2, -327679, 131073, 2, -327678, 131073, 2, -327677, 131073, 2, -262147, 131073, 2, -262148, 131073, 2, -262149, 131073, 2, -262150, 131073, 2, -262151, 131073, 2, -262153, 65537, 1, -262152, 393217, 2, -196616, 196609, 1, -131080, 196609, 1, -65544, 196609, 1, -8, 196609, 1, 65528, 196609, 1, 131064, 196609, 1, 196600, 393217, 1, 262136, 131073, 2, 196601, 131073, 0, 262137, 131073, 2, 262135, 65537, 2, 196599, 65537, 1, 131063, 65537, 1, 65527, 65537, 1, -9, 65537, 1, -65545, 65537, 1, -131081, 65537, 1, -196617, 65537, 1, 196614, 196609, 2, 131078, 196609, 1, 65542, 196609, 1, 6, 196609, 1, -65530, 196609, 1, -131066, 196609, 1, -196602, 196609, 1, -262138, 196609, 1, -327674, 196609, 1, -393210, 196609, 0, -393211, 131073, 0, -393212, 131073, 0, -393213, 131073, 0, -393214, 131073, 0, -393215, 131073, 0, -393216, 131073, 0, -327681, 131073, 0, -327682, 131073, 0, -327683, 131073, 0, -327684, 131073, 0, -327687, 131073, 0, -327688, 131073, 0, -327689, 65537, 0, -327686, 131073, 0, -327685, 131073, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "start"
+speed_scale = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_onv6d")
 }
@@ -323,7 +336,7 @@ position = Vector2(0, 86)
 
 [node name="Cursor" parent="." node_paths=PackedStringArray("default_player_pos") instance=ExtResource("4_e0175")]
 visible = false
-position = Vector2(41, 362)
+position = Vector2(538, 67)
 default_player_pos = NodePath("../DefaultPlayerPos")
 
 [node name="PlacePlayerPath" type="Path2D" parent="."]
@@ -343,3 +356,4 @@ position = Vector2(5, 10)
 remote_path = NodePath("../../../Cursor")
 
 [connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
+[connection signal="catch_finish" from="Cursor" to="." method="_on_cursor_catch_finish"]

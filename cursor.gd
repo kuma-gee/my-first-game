@@ -1,5 +1,7 @@
 extends Area2D
 
+signal catch_finish()
+
 @export var speed := 600
 @export var catch_speed := 1200
 @export var default_player_pos: Marker2D
@@ -17,6 +19,7 @@ func _physics_process(delta):
 			_move_to(original_pos, speed, delta)
 			if _is_close_to(original_pos):
 				original_pos = null
+				catch_finish.emit()
 		return
 	
 	if caught:
