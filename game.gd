@@ -32,23 +32,21 @@ func enclose_player():
 	
 	var lowest_y = 4
 	var highest_y = -6
-	await _fill_range(Vector2(-6, lowest_y - 1), Vector2(5, lowest_y), Vector2(1, 1), true)
-	await _fill_range(Vector2(6, lowest_y), Vector2(7, highest_y), Vector2(1, -1), true)
+	_fill_range(Vector2(-6, lowest_y - 1), Vector2(5, lowest_y), Vector2(1, 1), true)
+	_fill_range(Vector2(6, lowest_y), Vector2(7, highest_y), Vector2(1, -1), true)
 	await _fill_range(Vector2(-7, lowest_y), Vector2(-8, highest_y), Vector2(-1, -1), true)
 	await _fill_range(Vector2(-8, highest_y + 2), Vector2(7, highest_y), Vector2(1, -1), true)
 	
 	# make sure terrain is updated
 	for coord in map.get_used_cells(0):
 		map.set_cells_terrain_connect(0, [coord], 0, 0)
-		await _wait(PLACE_TILE_DELAY)
+		await _wait(PLACE_TILE_DELAY / 2)
 	enclosed = true
 
 func _fill_range(start: Vector2, end: Vector2, diff = Vector2(1, 1), connect = false):
-	var cells = []
 	for y in range(start.y, end.y + diff.y, diff.y):
 		for x in range(start.x, end.x + diff.x, diff.x):
 			var coord = Vector2i(x, y)
-			cells.append(coord)
 			
 			if map.get_cell_tile_data(0, coord) == null:
 				map.set_cell(0, coord, 1, Vector2(2, 0))
@@ -56,6 +54,7 @@ func _fill_range(start: Vector2, end: Vector2, diff = Vector2(1, 1), connect = f
 			
 			if connect:
 				map.set_cells_terrain_connect(0, [coord], 0, 0)
+
 
 func _on_player_left_screen():
 	cursor.catch_player(player)
