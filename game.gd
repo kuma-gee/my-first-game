@@ -190,15 +190,19 @@ func _on_effects_toggled():
 
 func _on_player_lost_health(hp: int):
 	for i in range(hp_container.get_child_count()):
+		var child = hp_container.get_child(i)
 		if i < hp:
+			child.heal_hp()
 			continue
 		
-		var child = hp_container.get_child(i)
 		child.lost_hp()
-
-	if hp == 1:
-		hp_container.get_child(0).pulse()
-
+	
+	if hp >= 1:
+		var first = hp_container.get_child(0)
+		if hp == 1:
+			first.pulse()
+		else:
+			first.stop_pulse()
 
 func _on_player_died():
 	if hp_container.get_child_count() > 0:

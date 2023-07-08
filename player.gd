@@ -25,6 +25,9 @@ signal double_jumped
 @onready var rect := $Body/Rect
 @onready var sprite := $Body/Sprite2D
 
+const SCORE_HEALTH_UP_MODULO := 10
+const MAX_HEALTH := 3
+
 var gravity = Vector2.DOWN * 3 # First time should be slower
 
 var gravity_enabled := true
@@ -135,6 +138,10 @@ func freeze(time_scale: float, duration: float):
 
 func increase_score():
 	score += 1
+	if score % SCORE_HEALTH_UP_MODULO == 0:
+		health += 1
+		health = min(health, MAX_HEALTH)
+		lost_health.emit(health) # signal name is wrong but doesn't matter
 	score_updated.emit(score)
 
 
