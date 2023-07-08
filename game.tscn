@@ -648,24 +648,10 @@ tracks/6/keys = {
 tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("EncloseTimer")
+tracks/7/path = NodePath("Keyboard")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(15),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [-1],
-"method": &"start"
-}]
-}
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Keyboard")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(2.7, 7, 11.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
@@ -679,13 +665,13 @@ tracks/8/keys = {
 "method": &"play"
 }]
 }
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Cursor")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cursor")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(5, 9.2),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -694,6 +680,20 @@ tracks/9/keys = {
 }, {
 "args": [],
 "method": &"play_click"
+}]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_enclose_timer"
 }]
 }
 
@@ -1654,10 +1654,6 @@ flip_dir = true
 stream = ExtResource("9_l83ef")
 volume_db = -15.0
 
-[node name="EncloseTimer" type="Timer" parent="."]
-wait_time = 6.0
-one_shot = true
-
 [node name="Keyboard" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_a337i")
 
@@ -1674,4 +1670,3 @@ stream = ExtResource("14_a337i")
 [connection signal="lost_health" from="Player" to="." method="_on_player_lost_health"]
 [connection signal="score_updated" from="Player" to="." method="_on_player_score_updated"]
 [connection signal="catch_finish" from="Cursor" to="." method="_on_cursor_catch_finish"]
-[connection signal="timeout" from="EncloseTimer" to="." method="_on_enclose_timer_timeout"]

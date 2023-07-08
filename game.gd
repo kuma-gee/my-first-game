@@ -2,6 +2,7 @@ extends Node2D
 
 const PLACE_TILE_DELAY = 0.05
 const PLACE_PLAYER_DELAY = 0.5
+const ENCLOSE_PLAYER_TIMER = 10.0
 
 const PLATFORM_SPAWN_DELAY = 0.5
 const PLATFORM_SCENE = preload("res://platform.tscn")
@@ -92,6 +93,10 @@ func show_platforms():
 		await _wait(PLATFORM_SPAWN_DELAY / speed_scale)
 	
 	anim.play("enemies")
+
+func start_enclose_timer():
+	await get_tree().create_timer(ENCLOSE_PLAYER_TIMER / speed_scale).timeout
+	enclose_player()
 
 func spawn_bot_enemies():
 	_fill_range(Vector2(-14, 5), Vector2(-11, 5), Vector2(1, 1), -1)
@@ -203,9 +208,6 @@ func _on_player_died():
 
 func pause():
 	get_tree().paused = true
-
-func _on_enclose_timer_timeout():
-	enclose_player()
 
 func restart():
 	get_tree().paused = false
