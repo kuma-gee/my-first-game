@@ -12,7 +12,8 @@ const PLATFORM_SCENE = preload("res://platform.tscn")
 @onready var player := $Player
 @onready var cursor := $Cursor
 @onready var bgm := $BGM
-@onready var hp_container := $CanvasLayer2/MarginContainer/HPContainer
+@onready var hp_container := $CanvasLayer2/MarginContainer/HBoxContainer/HPContainer
+@onready var score := $CanvasLayer2/MarginContainer/HBoxContainer/Score
 
 @onready var bot_spawn_l := $BotSpawnerL
 @onready var bot_spawn_r := $BotSpawnerR
@@ -23,6 +24,7 @@ var enclosed = false
 var platform_positions = []
 
 func _ready():
+	score.modulate = Color.TRANSPARENT
 	map.clear()
 	for child in map.get_children():
 		platform_positions.append(child.global_position)
@@ -163,3 +165,12 @@ func _on_enclose_timer_timeout():
 func restart():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+
+func _on_player_score_updated(s: int):
+	show_score()
+	score.text = "Score: %s" % s
+
+func show_score():
+	if score.modulate == Color.TRANSPARENT:
+		create_tween().tween_property(score, "modulate", Color.WHITE, 1.0)

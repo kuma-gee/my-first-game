@@ -115,7 +115,7 @@ func freeze(time_scale: float, duration: float):
 
 func increase_score():
 	score += 1
-	score_updated.emit()
+	score_updated.emit(score)
 
 
 func enable_collision():

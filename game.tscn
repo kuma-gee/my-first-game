@@ -1424,28 +1424,45 @@ text = "Effects"
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2"]
 visible = false
 modulate = Color(1, 1, 1, 0)
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_hxh6l")
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HPContainer" type="HBoxContainer" parent="CanvasLayer2/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2/MarginContainer"]
+layout_mode = 2
+
+[node name="HPContainer" type="HBoxContainer" parent="CanvasLayer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="HP" parent="CanvasLayer2/MarginContainer/HPContainer" instance=ExtResource("4_3usf7")]
+[node name="HP" parent="CanvasLayer2/MarginContainer/HBoxContainer/HPContainer" instance=ExtResource("4_3usf7")]
 layout_mode = 2
 
-[node name="HP2" parent="CanvasLayer2/MarginContainer/HPContainer" instance=ExtResource("4_3usf7")]
+[node name="HP2" parent="CanvasLayer2/MarginContainer/HBoxContainer/HPContainer" instance=ExtResource("4_3usf7")]
 layout_mode = 2
 
-[node name="HP3" parent="CanvasLayer2/MarginContainer/HPContainer" instance=ExtResource("4_3usf7")]
+[node name="HP3" parent="CanvasLayer2/MarginContainer/HBoxContainer/HPContainer" instance=ExtResource("4_3usf7")]
 layout_mode = 2
+
+[node name="Control" type="Control" parent="CanvasLayer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Score" type="Label" parent="CanvasLayer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Score:"
+horizontal_alignment = 2
 
 [node name="End" type="Control" parent="CanvasLayer2"]
 visible = false
@@ -1642,5 +1659,6 @@ stream = ExtResource("14_a337i")
 [connection signal="double_jumped" from="Player" to="." method="_on_player_double_jumped"]
 [connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
 [connection signal="lost_health" from="Player" to="." method="_on_player_lost_health"]
+[connection signal="score_updated" from="Player" to="." method="_on_player_score_updated"]
 [connection signal="catch_finish" from="Cursor" to="." method="_on_cursor_catch_finish"]
 [connection signal="timeout" from="EncloseTimer" to="." method="_on_enclose_timer_timeout"]

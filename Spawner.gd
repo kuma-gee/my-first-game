@@ -23,10 +23,8 @@ func _process(delta):
 
 func _spawn_enemy():
 	var rand = randf()
-	print(rand, " - ", score_spawn_chance)
 	if rand <= score_spawn_chance:
 		_spawn_score()
-		print("spawn score")
 	else:
 		var enem = ENEMY_SCENE.instantiate()
 		enem.colors_enabled = colors_enabled
