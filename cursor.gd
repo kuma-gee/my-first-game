@@ -43,6 +43,9 @@ func _is_close_to(pos: Vector2):
 	
 func enable_catch():
 	catching_enabled = true
+	
+func disable_catch():
+	catching_enabled = true
 
 func catch_player(player: Node2D):
 	if catching_enabled:

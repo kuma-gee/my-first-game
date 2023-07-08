@@ -100,9 +100,9 @@ func damage(dir: Vector2):
 			
 	if freeze_enabled:
 		if health <= 0:
-			freeze(0.01, 1.0)
+			freeze(0.01, 2.0)
 		else:
-			freeze(0.01, 0.1)
+			freeze(0.01, 0.8)
 
 func freeze(time_scale: float, duration: float):
 	Engine.time_scale = time_scale
