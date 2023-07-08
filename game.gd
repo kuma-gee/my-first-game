@@ -35,11 +35,11 @@ var platform_positions = []
 var speed_scale = 1.0
 
 func _ready():
-	if GameManager.restarts == 4:
+	if GameManager.restarts == 3:
 		finished_text.text = "I guess you have noticed I'm getting faster\nat building the game. But nothing special about it\nYou can go on with your life."
 		restart_text.text = "Well, then here we go again"
 	
-	if GameManager.restarts == 7:
+	if GameManager.restarts == GameManager.RESTARTS_FOR_BETTER_GRAPHICS:
 		finished_text.text = "I guess you really like this game.\nYou deserve some better graphics then"
 		restart_text.text = "Have fun."
 	

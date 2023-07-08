@@ -75,7 +75,7 @@ if [[ $VERSION =~ $VERSION_REGEX ]]; then
     fi
 
     github_release
-
+    git pull
 else
     echo "Missing or invalid version. Publish skipped."
 fi
