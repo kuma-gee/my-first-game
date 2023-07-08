@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal left_screen
 
+@export var jump_force := 500
 @export var accel := 800
 @export var speed := 400
 
@@ -22,10 +23,7 @@ func _physics_process(delta):
 		var motion = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		
 		if accel_enabled:
-			if abs(motion) > 0:
-				velocity.x = move_toward(velocity.x, motion * speed, accel * delta)
-			else:
-				velocity.x = move_toward(velocity.x, 0, accel * delta)
+			velocity.x = move_toward(velocity.x, motion * speed, accel * delta)
 		else:
 			velocity.x = motion * speed
 		
@@ -33,11 +31,14 @@ func _physics_process(delta):
 			if abs(motion) > 0:
 				body.scale.x = sign(motion)
 				
-		if anim_enabled:
-			if velocity.length() > 0:
-				anim.play("run")
-			else:
-				anim.play("idle")
+#		if anim_enabled:
+#			if velocity.length() > 0:
+#				anim.play("run")
+#			else:
+#				anim.play("idle")
+	
+	if Input.is_action_just_pressed("jump"):
+		velocity += Vector2.UP * jump_force
 	
 	if gravity_enabled:
 		velocity += gravity

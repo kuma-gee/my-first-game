@@ -1,6 +1,14 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://2lq3lykosfwx"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://2lq3lykosfwx"]
 
 [ext_resource type="Texture2D" uid="uid://o1b8gt74kow5" path="res://assets/Tiles64.png" id="1_jpqu3"]
+[ext_resource type="Texture2D" uid="uid://ds7t2s5g8tayg" path="res://assets/Tiles.png" id="1_kypfw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xspl0"]
+texture = ExtResource("1_kypfw")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_we1wm"]
 texture = ExtResource("1_jpqu3")
@@ -177,7 +185,6 @@ texture_region_size = Vector2i(64, 64)
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [resource]
-tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 0
@@ -186,3 +193,4 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_0/terrain_1/name = "Platforms"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_we1wm")
+sources/0 = SubResource("TileSetAtlasSource_xspl0")

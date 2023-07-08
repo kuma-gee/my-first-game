@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dd6npanx4gou5"]
+[gd_scene load_steps=12 format=3 uid="uid://dd6npanx4gou5"]
 
 [ext_resource type="TileSet" uid="uid://2lq3lykosfwx" path="res://tileset.tres" id="1_7b0gp"]
 [ext_resource type="Script" path="res://game.gd" id="1_ms0dt"]
+[ext_resource type="PackedScene" uid="uid://begrf0h66a2a7" path="res://platform.tscn" id="3_xrmi2"]
 [ext_resource type="PackedScene" uid="uid://hyisjlhjpgme" path="res://player.tscn" id="4_36mn7"]
 [ext_resource type="PackedScene" uid="uid://cp87el1f7kgw0" path="res://cursor.tscn" id="4_e0175"]
 
@@ -129,7 +130,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6, 2, 2.7, 3.3, 4.1, 4.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.66, 0.66, 1.0, 0.6632, 0.6632, 0.0]
+"values": [0.0, 0.7, 0.7, 1.0, 0.7, 0.7, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -294,7 +295,7 @@ _data = {
 
 [sub_resource type="Curve2D" id="Curve2D_qawq0"]
 _data = {
-"points": PackedVector2Array(29.6985, -64.3467, -29.6985, 64.3467, 533, -11, 131.522, 0, -131.522, 0, 294, 96, 0, 0, 0, 0, 36, 1, 0, 0, 0, 0, 36, 284)
+"points": PackedVector2Array(10.821, -16.681, -10.821, 16.681, 379, 4, 131.522, 0, -131.522, 0, 199, 69, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 173)
 }
 point_count = 4
 
@@ -315,7 +316,10 @@ color = Color(0.301961, 0.301961, 0.301961, 1)
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_7b0gp")
 format = 2
-layer_0/tile_data = PackedInt32Array(131072, 131073, 0, 131073, 131073, 0, 131074, 131073, 0, 131075, 131073, 0, 131076, 131073, 0, 196607, 131073, 0, 196606, 131073, 0, 196605, 131073, 0, 196604, 131073, 0, 196603, 131073, 0, 196602, 131073, 0, 262138, 131073, 2, 262139, 131073, 2, 262140, 131073, 2, 262141, 131073, 2, 262142, 131073, 2, 262143, 131073, 2, 196608, 131073, 2, 196609, 131073, 2, 196610, 131073, 2, 196611, 131073, 2, 196612, 131073, 2, 196613, 131073, 2, 131077, 327681, 1, 65541, 65537, 1, 5, 65537, 1, -262139, 65537, 1, -196603, 65537, 1, -131067, 65537, 1, -65531, 65537, 1, -327675, 327681, 2, -327676, 131073, 2, -262146, 131073, 2, -262145, 131073, 2, -327680, 131073, 2, -327679, 131073, 2, -327678, 131073, 2, -327677, 131073, 2, -262147, 131073, 2, -262148, 131073, 2, -262149, 131073, 2, -262150, 131073, 2, -262151, 131073, 2, -262153, 65537, 1, -262152, 393217, 2, -196616, 196609, 1, -131080, 196609, 1, -65544, 196609, 1, -8, 196609, 1, 65528, 196609, 1, 131064, 196609, 1, 196600, 393217, 1, 262136, 131073, 2, 196601, 131073, 0, 262137, 131073, 2, 262135, 65537, 2, 196599, 65537, 1, 131063, 65537, 1, 65527, 65537, 1, -9, 65537, 1, -65545, 65537, 1, -131081, 65537, 1, -196617, 65537, 1, 196614, 196609, 2, 131078, 196609, 1, 65542, 196609, 1, 6, 196609, 1, -65530, 196609, 1, -131066, 196609, 1, -196602, 196609, 1, -262138, 196609, 1, -327674, 196609, 1, -393210, 196609, 0, -393211, 131073, 0, -393212, 131073, 0, -393213, 131073, 0, -393214, 131073, 0, -393215, 131073, 0, -393216, 131073, 0, -327681, 131073, 0, -327682, 131073, 0, -327683, 131073, 0, -327684, 131073, 0, -327687, 131073, 0, -327688, 131073, 0, -327689, 65537, 0, -327686, 131073, 0, -327685, 131073, 0)
+layer_0/tile_data = PackedInt32Array(393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0)
+
+[node name="Platform" parent="TileMap" instance=ExtResource("3_xrmi2")]
+position = Vector2(100, 39)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -328,24 +332,24 @@ libraries = {
 
 [node name="Player" parent="." instance=ExtResource("4_36mn7")]
 visible = false
-position = Vector2(533, 57)
+position = Vector2(18.7629, 2.5796)
 speed = 100
 
 [node name="DefaultPlayerPos" type="Marker2D" parent="."]
-position = Vector2(0, 86)
+position = Vector2(0, -9)
 
 [node name="Cursor" parent="." node_paths=PackedStringArray("default_player_pos") instance=ExtResource("4_e0175")]
 visible = false
-position = Vector2(538, 67)
+position = Vector2(5, 210)
 default_player_pos = NodePath("../DefaultPlayerPos")
 
 [node name="PlacePlayerPath" type="Path2D" parent="."]
-position = Vector2(0, 68)
+position = Vector2(0, 27)
 curve = SubResource("Curve2D_qawq0")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PlacePlayerPath"]
-position = Vector2(36, 284)
-progress = 838.458
+position = Vector2(0, 173)
+progress = 588.675
 rotates = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlacePlayerPath/PathFollow2D"]
