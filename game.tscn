@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dd6npanx4gou5"]
+[gd_scene load_steps=32 format=3 uid="uid://dd6npanx4gou5"]
 
 [ext_resource type="TileSet" uid="uid://2lq3lykosfwx" path="res://tileset.tres" id="1_7b0gp"]
 [ext_resource type="Script" path="res://game.gd" id="1_ms0dt"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Spawner.gd" id="6_ls06b"]
 [ext_resource type="AudioStream" uid="uid://d2vlkjynlogry" path="res://assets/DancingOperators_Short(loop)(110).wav" id="9_l83ef"]
 [ext_resource type="AudioStream" uid="uid://divj51j3a1gid" path="res://assets/間抜け5.mp3" id="9_ri0xv"]
+[ext_resource type="AudioStream" uid="uid://ccvihb02p1ywi" path="res://assets/keyboard_1.wav" id="14_a337i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4413d"]
 content_margin_left = 1.0
@@ -382,6 +383,34 @@ tracks/2/keys = {
 "method": &"play"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Keyboard")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cursor")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_click"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_8rlqc"]
 resource_name = "effects"
@@ -494,6 +523,34 @@ tracks/7/keys = {
 "method": &"play"
 }]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Keyboard")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Cursor")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(8.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_click"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_yd82p"]
 resource_name = "enable_player_move"
@@ -597,6 +654,43 @@ tracks/7/keys = {
 "values": [{
 "args": [-1],
 "method": &"start"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Keyboard")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.7, 7, 11.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Cursor")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(5, 9.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_click"
+}, {
+"args": [],
+"method": &"play_click"
 }]
 }
 
@@ -825,6 +919,37 @@ tracks/1/keys = {
 "method": &"play"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Keyboard")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.1, 8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cursor")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_click"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_asplh"]
 resource_name = "health"
@@ -960,9 +1085,15 @@ tracks/6/path = NodePath("Cursor")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(4.9),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2.7, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
+"args": [],
+"method": &"play_click"
+}, {
+"args": [],
+"method": &"play_click"
+}, {
 "args": [],
 "method": &"enable_catch"
 }]
@@ -1036,6 +1167,20 @@ tracks/2/keys = {
 "values": [{
 "args": [],
 "method": &"disable_catch"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Keyboard")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
 }]
 }
 
@@ -1415,7 +1560,7 @@ volume_db = -10.0
 
 [node name="Player" parent="." instance=ExtResource("4_36mn7")]
 visible = false
-position = Vector2(379, 31)
+position = Vector2(1.83021, 27.6568)
 speed = 100
 
 [node name="DefaultPlayerPos" type="Marker2D" parent="."]
@@ -1423,7 +1568,7 @@ position = Vector2(0, -9)
 
 [node name="Cursor" parent="." node_paths=PackedStringArray("default_player_pos") instance=ExtResource("4_e0175")]
 visible = false
-position = Vector2(5, 204)
+position = Vector2(6.83021, 31.6568)
 default_player_pos = NodePath("../DefaultPlayerPos")
 
 [node name="PlacePlayerPath" type="Path2D" parent="."]
@@ -1467,6 +1612,9 @@ volume_db = -15.0
 [node name="EncloseTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="Keyboard" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_a337i")
 
 [connection signal="toggled" from="CanvasLayer2/Panel/MarginContainer/PlayerFeatures/Flip" to="." method="_on_flip_toggled"]
 [connection signal="toggled" from="CanvasLayer2/Panel/MarginContainer/PlayerFeatures/Accel" to="." method="_on_accel_toggled"]

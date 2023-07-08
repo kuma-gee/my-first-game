@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cp87el1f7kgw0"]
+[gd_scene load_steps=5 format=3 uid="uid://cp87el1f7kgw0"]
 
 [ext_resource type="Script" path="res://cursor.gd" id="1_dbc2u"]
 [ext_resource type="Texture2D" uid="uid://5uyjngpj1ver" path="res://assets/Mouse.png" id="1_pj0ao"]
+[ext_resource type="AudioStream" uid="uid://cndw52rb08d1f" path="res://assets/mouse_click.wav" id="3_f3mrn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_etk83"]
 radius = 11.0454
@@ -17,5 +18,9 @@ texture = ExtResource("1_pj0ao")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_etk83")
+
+[node name="MouseClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f3mrn")
+volume_db = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

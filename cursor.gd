@@ -6,6 +6,8 @@ signal catch_finish()
 @export var catch_speed := 1200
 @export var default_player_pos: Marker2D
 
+@onready var mouse_click := $MouseClick
+
 var catching_enabled = false
 
 var catching_player = null
@@ -55,3 +57,7 @@ func catch_player(player: Node2D):
 
 func _on_body_entered(body):
 	caught = true
+	play_click()
+
+func play_click():
+	mouse_click.play()
