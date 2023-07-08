@@ -42,3 +42,7 @@ func _process(delta):
 func _on_hit_box_body_entered(body):
 	var pos = body.global_position + Vector2.UP * 10
 	body.damage(global_position.direction_to(pos))
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
