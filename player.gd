@@ -14,6 +14,7 @@ signal double_jumped
 @onready var body := $Body
 @onready var shake := $Shake
 
+@onready var anim := $AnimationPlayer
 @onready var land_particles := $LandParticles
 @onready var jump_sound := $Jump
 @onready var jump_land_sound := $JumpLand
@@ -60,6 +61,7 @@ func _physics_process(delta):
 		if was_in_air and is_on_floor():
 			jump_land_sound.playing = true
 			if effects_enabled:
+				anim.play("land")
 				land_particles.emitting = true
 		else:
 			land_particles.emitting = false
@@ -79,12 +81,9 @@ func _physics_process(delta):
 	move_and_slide()
 
 func damage(dir: Vector2):
-	knockback = dir * 50
+	knockback = dir * 60
 	if sound_enabled:
 		hit_sound.playing = true
-	
-	if freeze_enabled:
-		freeze(0.1, 0.05)
 	
 	if effects_enabled:
 		modulate = Color(1.0, 0.0, 0.0, 0.8)
@@ -93,10 +92,17 @@ func damage(dir: Vector2):
 		shake.shake()
 		
 	if health_enabled:
-		health += 1
+		health -= 1
 		lost_health.emit()
 		if health <= 0:
+			collision.set_deferred("disabled", true)
 			died.emit()
+			
+	if freeze_enabled:
+		if health <= 0:
+			freeze(0.01, 1.0)
+		else:
+			freeze(0.01, 0.1)
 
 func freeze(time_scale: float, duration: float):
 	Engine.time_scale = time_scale

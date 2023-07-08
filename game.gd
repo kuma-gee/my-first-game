@@ -127,16 +127,38 @@ func _on_shake_toggled():
 
 func _on_effects_toggled():
 	player.enable_effects()
+	bot_spawn_l.enable_effect()
+	bot_spawn_r.enable_effect()
+	bot_spawn_lt.enable_effect()
+	bot_spawn_rt.enable_effect()
 
 
 func _on_player_lost_health():
 	if hp_container.get_child_count() > 0:
-		hp_container.get_child(hp_container.get_child_count() - 1).lost_hp()
+		var idx = 1
+		var hp = hp_container.get_child(hp_container.get_child_count() - idx)
+		while hp.removing:
+			idx += 1
+			var child_index = hp_container.get_child_count() - idx
+			if child_index < 0:
+				break
+			hp_container.get_child(child_index)
+		
+		if hp and not hp.removing:
+			hp.lost_hp()
 
 
 func _on_player_died():
-	pass # Replace with function body.
+	if hp_container.get_child_count() > 0:
+		for child in hp_container.get_children():
+			child.lost_hp()
+	anim.play("end")
 
+func pause():
+	get_tree().paused = true
 
 func _on_enclose_timer_timeout():
 	enclose_player()
+
+func restart():
+	get_tree().reload_current_scene()

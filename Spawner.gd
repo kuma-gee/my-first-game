@@ -10,6 +10,7 @@ const ENEMY_SCENE = preload("res://enemy.tscn")
 
 var timer = null
 var colors_enabled = false
+var effect_enabled = false
 
 func _process(delta):
 	if not enabled or timer != null: return
@@ -21,6 +22,7 @@ func _process(delta):
 func _spawn_enemy():
 	var enem = ENEMY_SCENE.instantiate()
 	enem.colors_enabled = colors_enabled
+	enem.effect_enabled = effect_enabled
 	enem.global_position = global_position
 	if flip_dir:
 		enem.dir = enem.dir.rotated(PI)
@@ -32,3 +34,8 @@ func enable_colors():
 	colors_enabled = true
 	for enem in get_tree().get_nodes_in_group("enemy"):
 		enem.colors_enabled = colors_enabled
+
+func enable_effect():
+	effect_enabled = true
+	for enem in get_tree().get_nodes_in_group("enemy"):
+		enem.effect_enabled = effect_enabled
