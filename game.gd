@@ -39,6 +39,7 @@ func build_first_platform():
 
 func enclose_player():
 	if enclosed: return
+	enclosed = true
 	
 	var lowest_y = 7
 	var highest_y = -9
@@ -47,7 +48,6 @@ func enclose_player():
 	await _fill_range(Vector2(-11, lowest_y), Vector2(-13, highest_y), Vector2(-1, -1))
 	await _fill_range(Vector2(-11, highest_y + 2), Vector2(10, highest_y), Vector2(1, -1))
 	
-	enclosed = true
 	if anim.is_playing():
 		await anim.animation_finished
 	anim.play("platforms")
@@ -136,3 +136,7 @@ func _on_player_lost_health():
 
 func _on_player_died():
 	pass # Replace with function body.
+
+
+func _on_enclose_timer_timeout():
+	enclose_player()
