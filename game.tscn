@@ -1568,7 +1568,7 @@ position = Vector2(0, -9)
 
 [node name="Cursor" parent="." node_paths=PackedStringArray("default_player_pos") instance=ExtResource("4_e0175")]
 visible = false
-position = Vector2(6.83021, 31.6568)
+position = Vector2(5, 204)
 default_player_pos = NodePath("../DefaultPlayerPos")
 
 [node name="PlacePlayerPath" type="Path2D" parent="."]

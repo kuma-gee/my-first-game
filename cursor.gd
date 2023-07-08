@@ -47,7 +47,7 @@ func enable_catch():
 	catching_enabled = true
 	
 func disable_catch():
-	catching_enabled = true
+	catching_enabled = false
 
 func catch_player(player: Node2D):
 	if catching_enabled:
