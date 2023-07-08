@@ -1,6 +1,6 @@
 extends Node
 
-var restarts = 0
+var restarts = 7
 
 func unlocked_better_graphics():
 	return restarts > 7

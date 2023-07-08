@@ -191,6 +191,9 @@ func _on_player_lost_health(hp: int):
 		var child = hp_container.get_child(i)
 		child.lost_hp()
 
+	if hp == 1:
+		hp_container.get_child(0).pulse()
+
 
 func _on_player_died():
 	if hp_container.get_child_count() > 0:
