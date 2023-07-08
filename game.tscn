@@ -1655,7 +1655,7 @@ stream = ExtResource("9_l83ef")
 volume_db = -15.0
 
 [node name="EncloseTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 6.0
 one_shot = true
 
 [node name="Keyboard" type="AudioStreamPlayer" parent="."]

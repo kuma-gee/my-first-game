@@ -41,7 +41,7 @@ func _ready():
 	
 	if GameManager.restarts == GameManager.RESTARTS_FOR_BETTER_GRAPHICS:
 		finished_text.text = "I guess you really like this game.\nYou deserve some better graphics then"
-		restart_text.text = "Have fun."
+		restart_text.text = "I hope you like it. Have fun."
 	
 	if GameManager.unlocked_better_graphics():
 		finished_text.text = "Ready for another round?"
