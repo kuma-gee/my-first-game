@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ul36bve7p3wb"]
+
+[ext_resource type="Texture2D" uid="uid://d3hv8nfofl8wh" path="res://assets/Checkbox_Normal.png" id="1_6r48h"]
+[ext_resource type="Script" path="res://feature_toggle.gd" id="1_ub52e"]
+[ext_resource type="Texture2D" uid="uid://ct4t0g73ejcot" path="res://assets/Checkbox_Pressed.png" id="2_6upv3"]
+[ext_resource type="Texture2D" uid="uid://gyal1acn86id" path="res://assets/Checkbox_Checked.png" id="3_21eph"]
+
+[node name="FeatureToggle" type="HBoxContainer"]
+script = ExtResource("1_ub52e")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Sprite Flip"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("1_6r48h")
+texture_pressed = ExtResource("2_6upv3")
+texture_disabled = ExtResource("3_21eph")
+stretch_mode = 3
