@@ -12,6 +12,7 @@ signal double_jumped
 @onready var anim := $AnimationPlayer
 @onready var shake := $Shake
 
+@onready var land_particles := $LandParticles
 @onready var jump_sound := $Jump
 @onready var jump_land_sound := $JumpLand
 @onready var hit_sound: AudioStreamPlayer = $Hit
@@ -27,7 +28,8 @@ var jump_enabled := false
 var floor_jump_enabled := false
 var sound_enabled := false
 var freeze_enabled := false
-var shake_enabled = false
+var shake_enabled := false
+var effects_enabled := false
 
 var knockback = Vector2.ZERO
 var was_in_air = false
@@ -48,6 +50,8 @@ func _physics_process(delta):
 		if knockback:
 			velocity += knockback
 			knockback = knockback.move_toward(Vector2.ZERO, 800 * delta)
+		else:
+			modulate = Color.WHITE
 				
 #		if anim_enabled:
 #			if velocity.length() > 0:
@@ -58,6 +62,10 @@ func _physics_process(delta):
 	if sound_enabled:
 		if was_in_air and is_on_floor():
 			jump_land_sound.playing = true
+			if effects_enabled:
+				land_particles.emitting = true
+		else:
+			land_particles.emitting = false
 	
 	if jump_enabled:
 		if Input.is_action_just_pressed("jump") and (not floor_jump_enabled or is_on_floor()):
@@ -80,7 +88,10 @@ func damage(dir: Vector2):
 	
 	if freeze_enabled:
 		freeze(0.1, 0.05)
-		
+	
+	if effects_enabled:
+		modulate = Color(1.0, 0.0, 0.0, 0.8)
+
 	if shake_enabled:
 		shake.shake()
 
@@ -122,6 +133,9 @@ func enable_freeze():
 	
 func enable_shake():
 	shake_enabled = true
+	
+func enable_effects():
+	effects_enabled = true
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	left_screen.emit()

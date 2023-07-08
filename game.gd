@@ -129,3 +129,7 @@ func _on_freeze_toggled():
 
 func _on_shake_toggled():
 	player.enable_shake()
+
+
+func _on_effects_toggled():
+	player.enable_effects()
