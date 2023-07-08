@@ -1405,7 +1405,6 @@ position = Vector2(-48, -20)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 process_mode = 3
 autoplay = "start"
-speed_scale = 5.0
 libraries = {
 "": SubResource("AnimationLibrary_onv6d")
 }
