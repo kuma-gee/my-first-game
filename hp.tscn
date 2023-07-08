@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://qtgjsojs1xly"]
+
+[ext_resource type="Script" path="res://Health.gd" id="1_tn27d"]
+
+[node name="HP" type="Control"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 10.0
+offset_bottom = 10.0
+script = ExtResource("1_tn27d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+pivot_offset = Vector2(5, 5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(1, 0.858824, 0.560784, 1)

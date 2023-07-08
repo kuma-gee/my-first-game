@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+signal lost_health
+signal died
+
 signal left_screen
 signal double_jumped
 
@@ -9,7 +12,6 @@ signal double_jumped
 
 @onready var collision := $CollisionShape2D
 @onready var body := $Body
-@onready var anim := $AnimationPlayer
 @onready var shake := $Shake
 
 @onready var land_particles := $LandParticles
@@ -23,16 +25,17 @@ var gravity_enabled := true
 var input_enabled := false
 var flip_enabled := false
 var accel_enabled := false
-var anim_enabled := false
 var jump_enabled := false
 var floor_jump_enabled := false
 var sound_enabled := false
 var freeze_enabled := false
 var shake_enabled := false
 var effects_enabled := false
+var health_enabled := false
 
 var knockback = Vector2.ZERO
 var was_in_air = false
+var health = 3
 
 func _physics_process(delta):
 	if input_enabled:
@@ -52,12 +55,6 @@ func _physics_process(delta):
 			knockback = knockback.move_toward(Vector2.ZERO, 800 * delta)
 		else:
 			modulate = Color.WHITE
-				
-#		if anim_enabled:
-#			if velocity.length() > 0:
-#				anim.play("run")
-#			else:
-#				anim.play("idle")
 	
 	if sound_enabled:
 		if was_in_air and is_on_floor():
@@ -94,6 +91,12 @@ func damage(dir: Vector2):
 
 	if shake_enabled:
 		shake.shake()
+		
+	if health_enabled:
+		health += 1
+		lost_health.emit()
+		if health <= 0:
+			died.emit()
 
 func freeze(time_scale: float, duration: float):
 	Engine.time_scale = time_scale
@@ -112,9 +115,6 @@ func enable_flip():
 func enable_gravity():
 	gravity_enabled = true
 	gravity = Vector2.DOWN * 30
-	
-func enable_anim():
-	anim_enabled = true
 	
 func enable_accel():
 	accel_enabled = true
@@ -136,6 +136,9 @@ func enable_shake():
 	
 func enable_effects():
 	effects_enabled = true
+
+func enable_health():
+	health_enabled = true
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	left_screen.emit()

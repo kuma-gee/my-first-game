@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://dd6npanx4gou5"]
+[gd_scene load_steps=27 format=3 uid="uid://dd6npanx4gou5"]
 
 [ext_resource type="TileSet" uid="uid://2lq3lykosfwx" path="res://tileset.tres" id="1_7b0gp"]
 [ext_resource type="Script" path="res://game.gd" id="1_ms0dt"]
 [ext_resource type="PackedScene" uid="uid://ul36bve7p3wb" path="res://feature_toggle.tscn" id="2_pwn8l"]
 [ext_resource type="Texture2D" uid="uid://f3yuma0gmk34" path="res://assets/SliderDrag.png" id="3_66h5i"]
 [ext_resource type="PackedScene" uid="uid://begrf0h66a2a7" path="res://platform.tscn" id="3_xrmi2"]
+[ext_resource type="PackedScene" uid="uid://qtgjsojs1xly" path="res://hp.tscn" id="4_3usf7"]
 [ext_resource type="PackedScene" uid="uid://hyisjlhjpgme" path="res://player.tscn" id="4_36mn7"]
 [ext_resource type="PackedScene" uid="uid://cp87el1f7kgw0" path="res://cursor.tscn" id="4_e0175"]
 [ext_resource type="Script" path="res://Spawner.gd" id="6_ls06b"]
@@ -162,6 +163,30 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer2/MarginContainer:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CanvasLayer2/MarginContainer:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_yd82p"]
@@ -489,6 +514,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer2/MarginContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_m7xmy"]
 resource_name = "colors"
@@ -631,6 +668,20 @@ tracks/6/keys = {
 "method": &"toggle"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["health", -1, 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ed68o"]
 resource_name = "enemies"
@@ -667,6 +718,48 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_asplh"]
+resource_name = "health"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer2/MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer2/MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_health"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_onv6d"]
 _data = {
 "RESET": SubResource("Animation_crjna"),
@@ -674,6 +767,7 @@ _data = {
 "effects": SubResource("Animation_8rlqc"),
 "enable_player_move": SubResource("Animation_yd82p"),
 "enemies": SubResource("Animation_ed68o"),
+"health": SubResource("Animation_asplh"),
 "place_player": SubResource("Animation_bec8w"),
 "platforms": SubResource("Animation_kb4ql"),
 "start": SubResource("Animation_5b5px")
@@ -785,6 +879,8 @@ layout_mode = 2
 text = "Effects"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2"]
+visible = false
+modulate = Color(1, 1, 1, 0)
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 10
@@ -792,83 +888,22 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2/MarginContainer"]
+[node name="HPContainer" type="HBoxContainer" parent="CanvasLayer2/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="Control" type="Control" parent="CanvasLayer2/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(10, 10)
+[node name="HP" parent="CanvasLayer2/MarginContainer/HPContainer" instance=ExtResource("4_3usf7")]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/MarginContainer/HBoxContainer/Control"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.785398
-pivot_offset = Vector2(5, 5)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Control2" type="Control" parent="CanvasLayer2/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(10, 10)
+[node name="HP2" parent="CanvasLayer2/MarginContainer/HPContainer" instance=ExtResource("4_3usf7")]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/MarginContainer/HBoxContainer/Control2"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.785398
-pivot_offset = Vector2(5, 5)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Control3" type="Control" parent="CanvasLayer2/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(10, 10)
+[node name="HP3" parent="CanvasLayer2/MarginContainer/HPContainer" instance=ExtResource("4_3usf7")]
 layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/MarginContainer/HBoxContainer/Control3"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.785398
-pivot_offset = Vector2(5, 5)
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="TileMap" type="TileMap" parent="."]
-modulate = Color(0.384314, 0.384314, 0.384314, 1)
 tile_set = ExtResource("1_7b0gp")
 format = 2
 layer_0/tile_data = PackedInt32Array(393220, 0, 0, 393219, 0, 0, 393218, 0, 0, 393217, 0, 0, 393216, 0, 0, 458751, 0, 0, 458750, 0, 0, 458749, 0, 0, 458748, 0, 0, 458747, 0, 0, 458746, 0, 0, 458745, 0, 0, 458744, 0, 0, 458743, 0, 0, 458742, 0, 0, 458741, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, -458742, 0, 0, -393206, 0, 0, -327670, 0, 0, -262134, 0, 0, -196598, 0, 0, -131062, 0, 0, -65526, 0, 0, 10, 0, 0, 65546, 0, 0, 131082, 0, 0, 196618, 0, 0, 262154, 0, 0, 327690, 0, 0, -458741, 0, 0, -393205, 0, 0, -327669, 0, 0, -262133, 0, 0, -196597, 0, 0, -131061, 0, 0, -65525, 0, 0, 11, 0, 0, 65547, 0, 0, 131083, 0, 0, 196619, 0, 0, 262155, 0, 0, 327691, 0, 0, 393227, 0, 0, -393228, 0, 0, -393227, 0, 0, -393226, 0, 0, -393225, 0, 0, -393224, 0, 0, -393223, 0, 0, -393222, 0, 0, -393221, 0, 0, -393220, 0, 0, -393219, 0, 0, -393218, 0, 0, -393217, 0, 0, -458752, 0, 0, -458751, 0, 0, -458750, 0, 0, -458749, 0, 0, -458748, 0, 0, -458747, 0, 0, -458746, 0, 0, -458745, 0, 0, -458744, 0, 0, -458743, 0, 0, -327692, 0, 0, -262156, 0, 0, -196620, 0, 0, -131084, 0, 0, -65548, 0, 0, -12, 0, 0, 65524, 0, 0, 131060, 0, 0, 196596, 0, 0, 262132, 0, 0, 327668, 0, 0, 393204, 0, 0, 458740, 0, 0, -327691, 0, 0, -262155, 0, 0, -196619, 0, 0, -131083, 0, 0, -65547, 0, 0, -11, 0, 0, 65525, 0, 0, 131061, 0, 0, 196597, 0, 0, 262133, 0, 0, 327669, 0, 0, 393205, 0, 0)
@@ -892,14 +927,14 @@ position = Vector2(-48, -20)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "start"
-speed_scale = 3.0
+speed_scale = 5.0
 libraries = {
 "": SubResource("AnimationLibrary_onv6d")
 }
 
 [node name="Player" parent="." instance=ExtResource("4_36mn7")]
 visible = false
-position = Vector2(379, 31)
+position = Vector2(260.382, 91.9029)
 speed = 100
 
 [node name="DefaultPlayerPos" type="Marker2D" parent="."]
@@ -907,7 +942,7 @@ position = Vector2(0, -9)
 
 [node name="Cursor" parent="." node_paths=PackedStringArray("default_player_pos") instance=ExtResource("4_e0175")]
 visible = false
-position = Vector2(5, 210)
+position = Vector2(384, 41)
 default_player_pos = NodePath("../DefaultPlayerPos")
 
 [node name="PlacePlayerPath" type="Path2D" parent="."]
@@ -915,8 +950,7 @@ position = Vector2(0, 27)
 curve = SubResource("Curve2D_qawq0")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PlacePlayerPath"]
-position = Vector2(0, 173)
-progress = 588.675
+position = Vector2(379, 4)
 rotates = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlacePlayerPath/PathFollow2D"]
@@ -955,6 +989,8 @@ volume_db = -15.0
 [connection signal="toggled" from="CanvasLayer2/Sound/MarginContainer/PlayerFeatures/Freeze" to="." method="_on_freeze_toggled"]
 [connection signal="toggled" from="CanvasLayer2/Sound/MarginContainer/PlayerFeatures/Shake" to="." method="_on_shake_toggled"]
 [connection signal="toggled" from="CanvasLayer2/Sound/MarginContainer/PlayerFeatures/Effects" to="." method="_on_effects_toggled"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="double_jumped" from="Player" to="." method="_on_player_double_jumped"]
 [connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
+[connection signal="lost_health" from="Player" to="." method="_on_player_lost_health"]
 [connection signal="catch_finish" from="Cursor" to="." method="_on_cursor_catch_finish"]

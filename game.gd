@@ -12,6 +12,7 @@ const PLATFORM_SCENE = preload("res://platform.tscn")
 @onready var player := $Player
 @onready var cursor := $Cursor
 @onready var bgm := $BGM
+@onready var hp_container := $CanvasLayer2/MarginContainer/HPContainer
 
 @onready var bot_spawn_l := $BotSpawnerL
 @onready var bot_spawn_r := $BotSpawnerR
@@ -46,10 +47,6 @@ func enclose_player():
 	await _fill_range(Vector2(-11, lowest_y), Vector2(-13, highest_y), Vector2(-1, -1))
 	await _fill_range(Vector2(-11, highest_y + 2), Vector2(10, highest_y), Vector2(1, -1))
 	
-	# make sure terrain is updated
-#	for coord in map.get_used_cells(0):
-#		map.set_cells_terrain_connect(0, [coord], 0, 0)
-#		await _wait(PLACE_TILE_DELAY / 2)
 	enclosed = true
 	if anim.is_playing():
 		await anim.animation_finished
@@ -89,9 +86,6 @@ func _fill_range(start: Vector2, end: Vector2, diff = Vector2(1, 1), source = 0)
 			var layer = 0
 			map.set_cell(layer, coord, source, TILE_ATLAS)
 			await _wait(PLACE_TILE_DELAY)
-			
-#			if connect:
-#				map.set_cells_terrain_connect(0, [coord], 0, 0)
 
 
 func _on_player_left_screen():
@@ -133,3 +127,12 @@ func _on_shake_toggled():
 
 func _on_effects_toggled():
 	player.enable_effects()
+
+
+func _on_player_lost_health():
+	if hp_container.get_child_count() > 0:
+		hp_container.get_child(hp_container.get_child_count() - 1).lost_hp()
+
+
+func _on_player_died():
+	pass # Replace with function body.
