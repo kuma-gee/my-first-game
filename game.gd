@@ -15,6 +15,9 @@ const PLATFORM_SCENE = preload("res://platform.tscn")
 @onready var hp_container := $CanvasLayer2/MarginContainer/HBoxContainer/HPContainer
 @onready var score := $CanvasLayer2/MarginContainer/HBoxContainer/Score
 
+@onready var finished_text := $CanvasLayer2/End/CenterContainer2/FinishedText
+@onready var restart_text := $CanvasLayer2/End/CenterContainer2/RestartText
+
 @onready var bot_spawn_l := $BotSpawnerL
 @onready var bot_spawn_r := $BotSpawnerR
 @onready var bot_spawn_lt := $BotSpawnerL2
@@ -22,8 +25,16 @@ const PLATFORM_SCENE = preload("res://platform.tscn")
 
 var enclosed = false
 var platform_positions = []
+var speed_scale = 1.0
 
 func _ready():
+	if GameManager.restarts == 4:
+		finished_text.text = "I guess you have noticed I'm getting faster\nat building the game. But nothing special about it\nYou can go on with your life."
+		restart_text.text = "Well, then here we go again"
+	
+	speed_scale = 1.0 + GameManager.restarts
+	anim.speed_scale = speed_scale
+	
 	score.modulate = Color.TRANSPARENT
 	map.clear()
 	for child in map.get_children():
@@ -36,7 +47,7 @@ func _wait(sec):
 func build_first_platform():
 	await _fill_range(Vector2(-10, 6), Vector2(9, 6))
 	
-	await _wait(PLACE_PLAYER_DELAY)
+	await _wait(PLACE_PLAYER_DELAY / speed_scale)
 	anim.play("place_player")
 
 func enclose_player():
@@ -59,7 +70,7 @@ func show_platforms():
 		var platform = PLATFORM_SCENE.instantiate()
 		platform.global_position = pos
 		map.add_child(platform)
-		await _wait(PLATFORM_SPAWN_DELAY)
+		await _wait(PLATFORM_SPAWN_DELAY / speed_scale)
 	
 	anim.play("enemies")
 
@@ -93,7 +104,7 @@ func _fill_range(start: Vector2, end: Vector2, diff = Vector2(1, 1), source = 0)
 			var coord = Vector2i(x, y)
 			var layer = 0
 			map.set_cell(layer, coord, source, TILE_ATLAS)
-			await _wait(PLACE_TILE_DELAY)
+			await _wait(PLACE_TILE_DELAY / speed_scale)
 
 
 func _on_player_left_screen():
@@ -164,6 +175,7 @@ func _on_enclose_timer_timeout():
 
 func restart():
 	get_tree().paused = false
+	GameManager.restarts += 1
 	get_tree().reload_current_scene()
 
 
