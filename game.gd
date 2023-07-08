@@ -1,5 +1,6 @@
 extends Node2D
 
+const TILE_ATLAS = Vector2(0, 2)
 const PLACE_TILE_DELAY = 0.05
 const PLACE_PLAYER_DELAY = 0.5
 const PLAYER_MOVEMENT_DELAY = 2.0
@@ -38,9 +39,9 @@ func enclose_player():
 	await _fill_range(Vector2(-8, highest_y + 2), Vector2(7, highest_y), Vector2(1, -1), true)
 	
 	# make sure terrain is updated
-	for coord in map.get_used_cells(0):
-		map.set_cells_terrain_connect(0, [coord], 0, 0)
-		await _wait(PLACE_TILE_DELAY / 2)
+#	for coord in map.get_used_cells(0):
+#		map.set_cells_terrain_connect(0, [coord], 0, 0)
+#		await _wait(PLACE_TILE_DELAY / 2)
 	enclosed = true
 
 func _fill_range(start: Vector2, end: Vector2, diff = Vector2(1, 1), connect = false):
@@ -49,11 +50,11 @@ func _fill_range(start: Vector2, end: Vector2, diff = Vector2(1, 1), connect = f
 			var coord = Vector2i(x, y)
 			
 			if map.get_cell_tile_data(0, coord) == null:
-				map.set_cell(0, coord, 1, Vector2(2, 0))
+				map.set_cell(0, coord, 1, TILE_ATLAS)
 				await _wait(PLACE_TILE_DELAY)
 			
-			if connect:
-				map.set_cells_terrain_connect(0, [coord], 0, 0)
+#			if connect:
+#				map.set_cells_terrain_connect(0, [coord], 0, 0)
 
 
 func _on_player_left_screen():

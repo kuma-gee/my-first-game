@@ -80,6 +80,42 @@ tracks/5/keys = {
 "values": [100]
 }
 
+[sub_resource type="Animation" id="Animation_yd82p"]
+resource_name = "enable_player_move"
+length = 6.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"enable_flip"
+}, {
+"args": [],
+"method": &"enable_accel"
+}, {
+"args": [],
+"method": &"enable_anim"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3, 4.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [200, 800, 300]
+}
+
 [sub_resource type="Animation" id="Animation_bec8w"]
 resource_name = "place_player"
 length = 5.0
@@ -203,7 +239,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [100]
+"values": [200]
 }
 
 [sub_resource type="Animation" id="Animation_5b5px"]
@@ -246,42 +282,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_yd82p"]
-resource_name = "enable_player_move"
-length = 6.0
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"enable_flip"
-}, {
-"args": [],
-"method": &"enable_accel"
-}, {
-"args": [],
-"method": &"enable_anim"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player:speed")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(3, 4.5, 6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [400, 800, 200]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_onv6d"]

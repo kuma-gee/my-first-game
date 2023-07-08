@@ -6,10 +6,10 @@ signal left_screen
 @export var speed := 400
 
 @onready var collision := $CollisionShape2D
-@onready var sprite := $Sprite2D
+@onready var body := $Body
 @onready var anim := $AnimationPlayer
 
-var gravity = Vector2.DOWN * 2 # First time should be slower
+var gravity = Vector2.DOWN * 3 # First time should be slower
 
 var gravity_enabled := true
 var input_enabled := false
@@ -31,7 +31,7 @@ func _physics_process(delta):
 		
 		if flip_enabled:
 			if abs(motion) > 0:
-				sprite.flip_h = sign(motion) == -1
+				body.scale.x = sign(motion)
 				
 		if anim_enabled:
 			if velocity.length() > 0:
