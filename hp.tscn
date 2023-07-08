@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://qtgjsojs1xly"]
+[gd_scene load_steps=3 format=3 uid="uid://qtgjsojs1xly"]
 
 [ext_resource type="Script" path="res://Health.gd" id="1_tn27d"]
+[ext_resource type="Texture2D" uid="uid://djccsked8v6vq" path="res://assets/Heart.png" id="2_3553e"]
 
 [node name="HP" type="Control"]
 custom_minimum_size = Vector2(10, 10)
@@ -28,3 +29,10 @@ pivot_offset = Vector2(5, 5)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.580392, 1, 0.560784, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 10.0
+offset_bottom = 8.0
+texture = ExtResource("2_3553e")
+stretch_mode = 3

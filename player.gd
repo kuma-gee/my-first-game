@@ -22,6 +22,9 @@ signal double_jumped
 @onready var jump_land_sound := $JumpLand
 @onready var hit_sound: AudioStreamPlayer = $Hit
 
+@onready var rect := $Body/Rect
+@onready var sprite := $Body/Sprite2D
+
 var gravity = Vector2.DOWN * 3 # First time should be slower
 
 var gravity_enabled := true
@@ -40,6 +43,10 @@ var knockback = Vector2.ZERO
 var was_in_air = false
 var health = 3
 var score = 0
+
+func _ready():
+	rect.visible = not GameManager.unlocked_better_graphics()
+	sprite.visible = GameManager.unlocked_better_graphics()
 
 func _physics_process(delta):
 	if input_enabled:
@@ -60,11 +67,24 @@ func _physics_process(delta):
 		else:
 			modulate = Color.WHITE
 	
+	if sprite.visible:
+		if is_on_floor():
+			if velocity.length() > 0:
+				anim.play("move")
+			else:
+				anim.play("idle")
+		else:
+			if velocity.y < 0:
+				anim.play("jump")
+			else:
+				anim.play("fall")
+	
 	if sound_enabled:
 		if was_in_air and is_on_floor():
 			jump_land_sound.playing = true
 			if effects_enabled:
-				anim.play("land")
+				if not sprite.visible:
+					anim.play("land")
 				land_particles.emitting = true
 		else:
 			land_particles.emitting = false
