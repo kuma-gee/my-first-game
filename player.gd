@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-signal lost_health
+signal score_updated(score)
+
+signal lost_health(hp)
 signal died
 
 signal left_screen
@@ -37,6 +39,7 @@ var health_enabled := false
 var knockback = Vector2.ZERO
 var was_in_air = false
 var health = 3
+var score = 0
 
 func _physics_process(delta):
 	if input_enabled:
@@ -93,7 +96,7 @@ func damage(dir: Vector2):
 		
 	if health_enabled:
 		health -= 1
-		lost_health.emit()
+		lost_health.emit(health)
 		if health <= 0:
 			collision.set_deferred("disabled", true)
 			died.emit()
@@ -108,6 +111,12 @@ func freeze(time_scale: float, duration: float):
 	Engine.time_scale = time_scale
 	await get_tree().create_timer(duration * time_scale).timeout
 	Engine.time_scale = 1
+
+
+func increase_score():
+	score += 1
+	score_updated.emit()
+
 
 func enable_collision():
 	collision.disabled = false

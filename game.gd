@@ -79,6 +79,12 @@ func enable_colors():
 	bot_spawn_lt.enable_colors()
 	bot_spawn_rt.enable_colors()
 
+func spawn_scores():
+	bot_spawn_l.score_spawn_chance = 0.1
+	bot_spawn_r.score_spawn_chance = 0.1
+	bot_spawn_lt.score_spawn_chance = 0.2
+	bot_spawn_rt.score_spawn_chance = 0.2
+
 func _fill_range(start: Vector2, end: Vector2, diff = Vector2(1, 1), source = 0):
 	for y in range(start.y, end.y + diff.y, diff.y):
 		for x in range(start.x, end.x + diff.x, diff.x):
@@ -133,19 +139,13 @@ func _on_effects_toggled():
 	bot_spawn_rt.enable_effect()
 
 
-func _on_player_lost_health():
-	if hp_container.get_child_count() > 0:
-		var idx = 1
-		var hp = hp_container.get_child(hp_container.get_child_count() - idx)
-		while hp.removing:
-			idx += 1
-			var child_index = hp_container.get_child_count() - idx
-			if child_index < 0:
-				break
-			hp_container.get_child(child_index)
+func _on_player_lost_health(hp: int):
+	for i in range(hp_container.get_child_count()):
+		if i < hp:
+			continue
 		
-		if hp and not hp.removing:
-			hp.lost_hp()
+		var child = hp_container.get_child(i)
+		child.lost_hp()
 
 
 func _on_player_died():

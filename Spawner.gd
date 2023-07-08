@@ -6,11 +6,13 @@ extends Marker2D
 @export var enabled := false
 @export var flip_dir := false
 
+const SCORE_SCENE = preload("res://score.tscn")
 const ENEMY_SCENE = preload("res://enemy.tscn")
 
 var timer = null
 var colors_enabled = false
 var effect_enabled = false
+var score_spawn_chance = 0.0
 
 func _process(delta):
 	if not enabled or timer != null: return
@@ -20,15 +22,28 @@ func _process(delta):
 	timer.timeout.connect(func(): _spawn_enemy())
 
 func _spawn_enemy():
-	var enem = ENEMY_SCENE.instantiate()
-	enem.colors_enabled = colors_enabled
-	enem.effect_enabled = effect_enabled
-	enem.global_position = global_position
-	if flip_dir:
-		enem.dir = enem.dir.rotated(PI)
-	
-	get_tree().current_scene.add_child(enem)
+	var rand = randf()
+	print(rand, " - ", score_spawn_chance)
+	if rand <= score_spawn_chance:
+		_spawn_score()
+		print("spawn score")
+	else:
+		var enem = ENEMY_SCENE.instantiate()
+		enem.colors_enabled = colors_enabled
+		enem.effect_enabled = effect_enabled
+		enem.global_position = global_position
+		if flip_dir:
+			enem.dir = enem.dir.rotated(PI)
+		get_tree().current_scene.add_child(enem)
+		
 	timer = null
+
+func _spawn_score():
+	var score = SCORE_SCENE.instantiate()
+	if flip_dir:
+		score.dir = score.dir.rotated(PI)
+	score.global_position = global_position
+	get_tree().current_scene.add_child(score)
 
 func enable_colors():
 	colors_enabled = true
