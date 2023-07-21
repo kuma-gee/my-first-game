@@ -14,12 +14,6 @@ const PLATFORM_SCENE = preload("res://platform.tscn")
 @onready var bgm := $BGM
 @onready var tilemap := $TileMap
 
-@onready var hp_container := $CanvasLayer2/MarginContainer/HBoxContainer/HPContainer
-@onready var score := $CanvasLayer2/MarginContainer/HBoxContainer/Score
-
-@onready var finished_text := $CanvasLayer2/End/CenterContainer2/FinishedText
-@onready var restart_text := $CanvasLayer2/End/CenterContainer2/RestartText
-
 @onready var bot_spawn_l := $BotSpawnerL
 @onready var bot_spawn_r := $BotSpawnerR
 @onready var bot_spawn_lt := $BotSpawnerL2
@@ -32,31 +26,9 @@ var terrain_id = 0
 var layer = 0
 
 var enclosed = false
-var platform_positions = []
-var speed_scale = 1.0
 
 func _ready():
-	if GameManager.restarts == 3:
-		finished_text.text = "I guess you have noticed I'm getting faster\nat building the game. But nothing special about it\nYou can go on with your life."
-		restart_text.text = "Well, then here we go again"
-	
-	if GameManager.restarts == GameManager.RESTARTS_FOR_BETTER_GRAPHICS:
-		finished_text.text = "I guess you really like this game.\nYou deserve some better graphics then"
-		restart_text.text = "I hope you like it. Have fun."
-	
-	if GameManager.unlocked_better_graphics():
-		finished_text.text = "Ready for another round?"
-		restart_text.text = "Let's go then"
-		tile_source = 2
-		tile_atlas = Vector2(2, 0)
-	
-	speed_scale = min(1.0 + GameManager.restarts, 10)
-	anim.speed_scale = speed_scale
-	
-	score.modulate = Color.TRANSPARENT
-	for child in map.get_children():
-		platform_positions.append(child.global_position)
-		map.remove_child(child)
+	DialogManager.show_dialog(tr("FIRST_HELLO"))
 
 func _wait(sec):
 	await get_tree().create_timer(sec).timeout
@@ -76,19 +48,7 @@ func enclose_player():
 	if anim.is_playing():
 		await anim.animation_finished
 	anim.play("platforms")
-	
-func show_platforms():
-	for pos in platform_positions:
-		var platform = PLATFORM_SCENE.instantiate()
-		platform.global_position = pos
-		map.add_child(platform)
-		await _wait(PLATFORM_SPAWN_DELAY / speed_scale)
-	
-	anim.play("enemies")
 
-func start_enclose_timer():
-	await get_tree().create_timer(ENCLOSE_PLAYER_TIMER / speed_scale).timeout
-	enclose_player()
 
 func spawn_bot_enemies():
 	_fill_range(Vector2(-14, 5), Vector2(-11, 5), Vector2(1, 1), -1)
@@ -125,7 +85,7 @@ func _fill_range(start: Vector2, end: Vector2, diff = Vector2(1, 1), source = ti
 		for x in range(start.x, end.x + diff.x, diff.x):
 			var coord = Vector2i(x, y)
 			map.set_cell(layer, coord, source, tile_atlas)
-			await _wait(PLACE_TILE_DELAY / speed_scale)
+			await _wait(PLACE_TILE_DELAY)
 			
 			if GameManager.unlocked_better_graphics() and source != -1:
 				map.set_cells_terrain_connect(layer, [coord], terrain_set, terrain_id)
@@ -171,27 +131,21 @@ func _on_effects_toggled():
 	bot_spawn_rt.enable_effect()
 
 
-func _on_player_lost_health(hp: int):
-	for i in range(hp_container.get_child_count()):
-		var child = hp_container.get_child(i)
-		if i < hp:
-			child.heal_hp()
-			continue
-		
-		child.lost_hp()
-	
-	if hp >= 1:
-		var first = hp_container.get_child(0)
-		if hp == 1:
-			first.pulse()
-		else:
-			first.stop_pulse()
-
-func _on_player_died():
-	if hp_container.get_child_count() > 0:
-		for child in hp_container.get_children():
-			child.lost_hp()
-	anim.play("end")
+#func _on_player_lost_health(hp: int):
+#	for i in range(hp_container.get_child_count()):
+#		var child = hp_container.get_child(i)
+#		if i < hp:
+#			child.heal_hp()
+#			continue
+#
+#		child.lost_hp()
+#
+#	if hp >= 1:
+#		var first = hp_container.get_child(0)
+#		if hp == 1:
+#			first.pulse()
+#		else:
+#			first.stop_pulse()
 
 func pause():
 	get_tree().paused = true
@@ -201,11 +155,3 @@ func restart():
 	GameManager.restarts += 1
 	get_tree().reload_current_scene()
 
-
-func _on_player_score_updated(s: int):
-	show_score()
-	score.text = "Score: %s" % s
-
-func show_score():
-	if score.modulate == Color.TRANSPARENT:
-		create_tween().tween_property(score, "modulate", Color.WHITE, 1.0)

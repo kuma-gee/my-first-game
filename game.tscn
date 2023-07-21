@@ -1,41 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://dd6npanx4gou5"]
+[gd_scene load_steps=18 format=3 uid="uid://dd6npanx4gou5"]
 
 [ext_resource type="TileSet" uid="uid://2lq3lykosfwx" path="res://tileset.tres" id="1_7b0gp"]
 [ext_resource type="Script" path="res://game.gd" id="1_ms0dt"]
-[ext_resource type="StyleBox" uid="uid://cs1eke36tlblp" path="res://panel.tres" id="2_1p44v"]
-[ext_resource type="Theme" uid="uid://dmwx08t0mkvrs" path="res://theme.tres" id="2_hxh6l"]
-[ext_resource type="PackedScene" uid="uid://ul36bve7p3wb" path="res://feature_toggle.tscn" id="2_pwn8l"]
-[ext_resource type="Texture2D" uid="uid://f3yuma0gmk34" path="res://assets/SliderDrag.png" id="3_66h5i"]
-[ext_resource type="PackedScene" uid="uid://begrf0h66a2a7" path="res://platform.tscn" id="3_xrmi2"]
-[ext_resource type="PackedScene" uid="uid://qtgjsojs1xly" path="res://hp.tscn" id="4_3usf7"]
 [ext_resource type="PackedScene" uid="uid://hyisjlhjpgme" path="res://player.tscn" id="4_36mn7"]
 [ext_resource type="PackedScene" uid="uid://cp87el1f7kgw0" path="res://cursor.tscn" id="4_e0175"]
 [ext_resource type="Script" path="res://Spawner.gd" id="6_ls06b"]
 [ext_resource type="AudioStream" uid="uid://divj51j3a1gid" path="res://assets/sound/間抜け5.mp3" id="9_15gpa"]
 [ext_resource type="AudioStream" uid="uid://d2vlkjynlogry" path="res://assets/sound/DancingOperators_Short(loop)(110).wav" id="13_mw1vs"]
 [ext_resource type="AudioStream" uid="uid://ccvihb02p1ywi" path="res://assets/sound/keyboard_1.wav" id="14_rl7u6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4413d"]
-content_margin_left = 1.0
-content_margin_top = 1.0
-content_margin_right = 1.0
-content_margin_bottom = 1.0
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omlnh"]
-bg_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4iqp"]
-bg_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="Theme" id="Theme_am7ex"]
-default_font_size = 8
-
-[sub_resource type="LabelSettings" id="LabelSettings_g5l4x"]
-font_size = 14
-font_color = Color(1, 0.87451, 0.321569, 1)
-outline_size = 6
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_m7xmy"]
 resource_name = "colors"
@@ -106,48 +78,22 @@ length = 30.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer2/Sound:visible")
+tracks/0/path = NodePath("CanvasLayer2/Sound:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2, 25.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer2/Sound:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(2, 3, 24.1, 25.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer2/Sound/MarginContainer/PlayerFeatures/SFX")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"toggle"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer2/Sound/MarginContainer/PlayerFeatures/BGM")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer2/Sound/MarginContainer/PlayerFeatures/BGM")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(8.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -155,88 +101,18 @@ tracks/3/keys = {
 "method": &"toggle"
 }]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer2/Sound/MarginContainer/PlayerFeatures/Freeze")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(12.2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"toggle"
-}]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer2/Sound/MarginContainer/PlayerFeatures/Shake")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer2/Sound/MarginContainer/PlayerFeatures/Shake")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(16.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"toggle"
-}]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer2/Sound/MarginContainer/PlayerFeatures/Effects")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(20.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"toggle"
-}]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("AnimationPlayer")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(27.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["health", -1, 1.0, false],
-"method": &"play"
-}]
-}
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Keyboard")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(2.9),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Cursor")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(8.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_click"
 }]
 }
 
@@ -246,11 +122,11 @@ length = 48.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer2/End:modulate")
+tracks/0/path = NodePath("CanvasLayer2/End/CenterContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 1.5),
+"times": PackedFloat32Array(2.5, 3.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -258,189 +134,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer2/End/CenterContainer:modulate")
+tracks/1/path = NodePath("CanvasLayer2/End/CenterContainer/VBoxContainer/Label3:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2.5, 3.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer2/End:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.5, 45.9),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"pause"
-}, {
-"args": [],
-"method": &"restart"
-}]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AnimationPlayer/Gameover")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer2/End/CenterContainer/VBoxContainer/Label4:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(2.4, 11.5, 12.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer2/End/CenterContainer/VBoxContainer/Label3:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(2.4, 6.4, 7.4, 9.4, 10.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer2/End/CenterContainer/VBoxContainer/Label2:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer2/End/CenterContainer/VBoxContainer/Label2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(2.4, 4.4, 5.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasLayer2/End/CenterContainer/VBoxContainer/Label4:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(2.4, 10.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("CanvasLayer2/End/CenterContainer/VBoxContainer/Label3:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(2.4, 10.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CanvasLayer2/End/ColorRect2:modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 14.4, 16.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("CanvasLayer2/End/CenterContainer2/FinishedText:modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 27.7, 28.7, 34.1, 35.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("CanvasLayer2/End/CenterContainer2/RestartText:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0, 39.4, 40.4, 43.4, 44.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("CanvasLayer2/End/CenterContainer2:modulate")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("CanvasLayer2/End/CenterContainer2:visible")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("AnimationPlayer:speed_scale")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(27.3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_ed68o"]
@@ -515,48 +228,22 @@ length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer2/MarginContainer:visible")
+tracks/0/path = NodePath("CanvasLayer2/MarginContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer2/MarginContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(3, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Player")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"enable_health"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(6),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -744,58 +431,10 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer2/Panel:visible")
+tracks/2/path = NodePath("CanvasLayer2/Sound:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TileMap:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer2/Sound:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer2/MarginContainer:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer2/End:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -817,249 +456,10 @@ _data = {
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ms0dt")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-process_mode = 3
-visible = false
-
-[node name="Panel" type="PanelContainer" parent="CanvasLayer2"]
-modulate = Color(1, 1, 1, 0)
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_styles/panel = ExtResource("2_1p44v")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2/Panel"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="PlayerFeatures" type="VBoxContainer" parent="CanvasLayer2/Panel/MarginContainer"]
-layout_mode = 2
-theme = ExtResource("2_hxh6l")
-
-[node name="Flip" parent="CanvasLayer2/Panel/MarginContainer/PlayerFeatures" instance=ExtResource("2_pwn8l")]
-layout_mode = 2
-text = "Sprite Flip"
-
-[node name="Accel" parent="CanvasLayer2/Panel/MarginContainer/PlayerFeatures" instance=ExtResource("2_pwn8l")]
-layout_mode = 2
-text = "Acceleration"
-
-[node name="Speed" type="HBoxContainer" parent="CanvasLayer2/Panel/MarginContainer/PlayerFeatures"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer2/Panel/MarginContainer/PlayerFeatures/Speed"]
-layout_mode = 2
-text = "Speed"
-
-[node name="HSlider" type="HSlider" parent="CanvasLayer2/Panel/MarginContainer/PlayerFeatures/Speed"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_icons/grabber = ExtResource("3_66h5i")
-theme_override_icons/grabber_highlight = ExtResource("3_66h5i")
-theme_override_icons/grabber_disabled = ExtResource("3_66h5i")
-theme_override_styles/slider = SubResource("StyleBoxFlat_4413d")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_omlnh")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_v4iqp")
-max_value = 1000.0
-value = 100.0
-
-[node name="Sound" type="PanelContainer" parent="CanvasLayer2"]
-visible = false
-modulate = Color(1, 1, 1, 0)
-offset_right = 40.0
-offset_bottom = 40.0
-theme = ExtResource("2_hxh6l")
-theme_override_styles/panel = ExtResource("2_1p44v")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2/Sound"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="PlayerFeatures" type="VBoxContainer" parent="CanvasLayer2/Sound/MarginContainer"]
-layout_mode = 2
-theme = SubResource("Theme_am7ex")
-
-[node name="SFX" parent="CanvasLayer2/Sound/MarginContainer/PlayerFeatures" instance=ExtResource("2_pwn8l")]
-layout_mode = 2
-text = "SFX"
-
-[node name="BGM" parent="CanvasLayer2/Sound/MarginContainer/PlayerFeatures" instance=ExtResource("2_pwn8l")]
-layout_mode = 2
-text = "BGM"
-
-[node name="Freeze" parent="CanvasLayer2/Sound/MarginContainer/PlayerFeatures" instance=ExtResource("2_pwn8l")]
-layout_mode = 2
-text = "Frame Freeze"
-
-[node name="Shake" parent="CanvasLayer2/Sound/MarginContainer/PlayerFeatures" instance=ExtResource("2_pwn8l")]
-layout_mode = 2
-text = "Screen Shake"
-
-[node name="Effects" parent="CanvasLayer2/Sound/MarginContainer/PlayerFeatures" instance=ExtResource("2_pwn8l")]
-layout_mode = 2
-text = "Effects"
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2"]
-process_mode = 1
-visible = false
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_hxh6l")
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2/MarginContainer"]
-layout_mode = 2
-
-[node name="HPContainer" type="HBoxContainer" parent="CanvasLayer2/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="HP" parent="CanvasLayer2/MarginContainer/HBoxContainer/HPContainer" instance=ExtResource("4_3usf7")]
-layout_mode = 2
-
-[node name="HP2" parent="CanvasLayer2/MarginContainer/HBoxContainer/HPContainer" instance=ExtResource("4_3usf7")]
-layout_mode = 2
-
-[node name="HP3" parent="CanvasLayer2/MarginContainer/HBoxContainer/HPContainer" instance=ExtResource("4_3usf7")]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="CanvasLayer2/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-
-[node name="Score" type="Label" parent="CanvasLayer2/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-text = "Score:"
-horizontal_alignment = 2
-
-[node name="End" type="Control" parent="CanvasLayer2"]
-visible = false
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_hxh6l")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/End"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.588235)
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer2/End"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/End/CenterContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer2/End/CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Thank you for playing"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="CanvasLayer2/End/CenterContainer/VBoxContainer"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-text = "My First Game"
-label_settings = SubResource("LabelSettings_g5l4x")
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="CanvasLayer2/End/CenterContainer/VBoxContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-text = "and for all the support
-on stackoverflow"
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="CanvasLayer2/End/CenterContainer/VBoxContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-text = "It has been a great 
-learning experience!"
-horizontal_alignment = 1
-
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer2/End"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer2/End"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="FinishedText" type="Label" parent="CanvasLayer2/End/CenterContainer2"]
-modulate = Color(1, 1, 1, 0.599998)
-layout_mode = 2
-text = "The game is really finished now.
-You can go do something else"
-horizontal_alignment = 1
-
-[node name="RestartText" type="Label" parent="CanvasLayer2/End/CenterContainer2"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-text = "Fine, if you want to play the game again.
-Here you go."
-horizontal_alignment = 1
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_7b0gp")
 format = 2
 layer_0/tile_data = PackedInt32Array(458742, 0, 0, 458743, 0, 0, 458744, 0, 0, 458745, 0, 0, 458746, 0, 0, 458747, 0, 0, 458748, 0, 0, 458749, 0, 0, 458750, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0)
-
-[node name="Platform" parent="TileMap" instance=ExtResource("3_xrmi2")]
-position = Vector2(84, 53)
-
-[node name="Platform2" parent="TileMap" instance=ExtResource("3_xrmi2")]
-position = Vector2(105, -51)
-
-[node name="Platform3" parent="TileMap" instance=ExtResource("3_xrmi2")]
-position = Vector2(-103, -73)
-
-[node name="Platform4" parent="TileMap" instance=ExtResource("3_xrmi2")]
-position = Vector2(18, 23)
-
-[node name="Platform5" parent="TileMap" instance=ExtResource("3_xrmi2")]
-position = Vector2(-48, -20)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -1108,13 +508,6 @@ volume_db = -15.0
 [node name="Keyboard" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_rl7u6")
 
-[connection signal="toggled" from="CanvasLayer2/Panel/MarginContainer/PlayerFeatures/Flip" to="." method="_on_flip_toggled"]
-[connection signal="toggled" from="CanvasLayer2/Panel/MarginContainer/PlayerFeatures/Accel" to="." method="_on_accel_toggled"]
-[connection signal="toggled" from="CanvasLayer2/Sound/MarginContainer/PlayerFeatures/SFX" to="." method="_on_sfx_toggled"]
-[connection signal="toggled" from="CanvasLayer2/Sound/MarginContainer/PlayerFeatures/BGM" to="." method="_on_bgm_toggled"]
-[connection signal="toggled" from="CanvasLayer2/Sound/MarginContainer/PlayerFeatures/Freeze" to="." method="_on_freeze_toggled"]
-[connection signal="toggled" from="CanvasLayer2/Sound/MarginContainer/PlayerFeatures/Shake" to="." method="_on_shake_toggled"]
-[connection signal="toggled" from="CanvasLayer2/Sound/MarginContainer/PlayerFeatures/Effects" to="." method="_on_effects_toggled"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
 [connection signal="lost_health" from="Player" to="." method="_on_player_lost_health"]

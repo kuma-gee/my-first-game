@@ -1,0 +1,67 @@
+# Translations template for PROJECT.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-07-21 21:05+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
+
+msgid "Sprite Flip"
+msgstr ""
+
+msgid "FIRST_HELLO"
+msgstr ""
+
+msgid "Acceleration"
+msgstr ""
+
+msgid "Speed"
+msgstr ""
+
+msgid "SFX"
+msgstr ""
+
+msgid "BGM"
+msgstr ""
+
+msgid "Frame Freeze"
+msgstr ""
+
+msgid "Screen Shake"
+msgstr ""
+
+msgid "Effects"
+msgstr ""
+
+msgid "Score:"
+msgstr ""
+
+msgid "Thank you for playing"
+msgstr ""
+
+msgid "My First Game"
+msgstr ""
+
+msgid "and for all the supporton stackoverflow"
+msgstr ""
+
+msgid "It has been a great learning experience!"
+msgstr ""
+
+msgid "The game is really finished now.You can go do something else"
+msgstr ""
+
+msgid "Fine, if you want to play the game again.Here you go."
+msgstr ""
+
