@@ -8,7 +8,7 @@ signal catch_finish()
 
 @onready var mouse_click := $MouseClick
 
-var catching_enabled = false
+var catching_enabled = true
 
 var catching_player = null
 var caught = false

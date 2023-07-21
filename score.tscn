@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://score.gd" id="1_f34eg"]
 [ext_resource type="Texture2D" uid="uid://ciopqbv08j8a6" path="res://assets/Coin.png" id="2_km4p0"]
-[ext_resource type="AudioStream" uid="uid://cqamsdvwygdqb" path="res://assets/パッ.mp3" id="2_lvqma"]
+[ext_resource type="AudioStream" uid="uid://cqamsdvwygdqb" path="res://assets/sound/パッ.mp3" id="3_lf66x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rgm0r"]
 radius = 9.05539
@@ -97,7 +97,7 @@ color = Color(1, 0.92549, 0.509804, 1)
 texture = ExtResource("2_km4p0")
 
 [node name="PickupSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_lvqma")
+stream = ExtResource("3_lf66x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"

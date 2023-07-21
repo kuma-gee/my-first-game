@@ -6,11 +6,10 @@ signal lost_health(hp)
 signal died
 
 signal left_screen
-signal double_jumped
 
 @export var jump_force := 500
 @export var accel := 800
-@export var speed := 400
+@export var speed := 200
 
 @onready var collision := $CollisionShape2D
 @onready var body := $Body
@@ -28,14 +27,13 @@ signal double_jumped
 const SCORE_HEALTH_UP_MODULO := 10
 const MAX_HEALTH := 3
 
-var gravity = Vector2.DOWN * 3 # First time should be slower
+var gravity = Vector2.DOWN * 30
 
 var gravity_enabled := true
-var input_enabled := false
-var flip_enabled := false
-var accel_enabled := false
-var jump_enabled := false
-var floor_jump_enabled := false
+var input_enabled := true
+var flip_enabled := true
+var accel_enabled := true
+var jump_enabled := true
 var sound_enabled := false
 var freeze_enabled := false
 var shake_enabled := false
@@ -93,9 +91,7 @@ func _physics_process(delta):
 			land_particles.emitting = false
 	
 	if jump_enabled:
-		if Input.is_action_just_pressed("jump") and (not floor_jump_enabled or is_on_floor()):
-			if not is_on_floor():
-				double_jumped.emit()
+		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity += Vector2.UP * jump_force
 			if sound_enabled:
 				jump_sound.playing = true
@@ -148,31 +144,15 @@ func increase_score():
 func enable_collision():
 	collision.disabled = false
 
-func enable_input():
-	input_enabled = true
-
-func enable_flip():
-	flip_enabled = true
-
-func enable_gravity():
-	gravity_enabled = true
-	gravity = Vector2.DOWN * 30
-	
-func enable_accel():
-	accel_enabled = true
-
-func enable_jump():
-	jump_enabled = true
-
-func enable_floor_jump():
-	floor_jump_enabled = true
-
 func enable_sound():
 	sound_enabled = true
 
 func enable_freeze():
 	freeze_enabled = true
-	
+
+func enable_gravity():
+	gravity_enabled = true
+
 func enable_shake():
 	shake_enabled = true
 	

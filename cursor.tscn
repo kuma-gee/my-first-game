@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://cursor.gd" id="1_dbc2u"]
 [ext_resource type="Texture2D" uid="uid://5uyjngpj1ver" path="res://assets/Mouse.png" id="1_pj0ao"]
-[ext_resource type="AudioStream" uid="uid://cndw52rb08d1f" path="res://assets/mouse_click.wav" id="3_f3mrn"]
+[ext_resource type="AudioStream" uid="uid://cndw52rb08d1f" path="res://assets/sound/mouse_click.wav" id="3_f3mrn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_etk83"]
 radius = 11.0454

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Health.gd" id="1_tn27d"]
 [ext_resource type="Texture2D" uid="uid://djccsked8v6vq" path="res://assets/Heart.png" id="2_3553e"]
-[ext_resource type="AudioStream" uid="uid://6bgcmoy6i3xq" path="res://assets/心臓の鼓動2.mp3" id="3_vbqc6"]
+[ext_resource type="AudioStream" uid="uid://6bgcmoy6i3xq" path="res://assets/sound/心臓の鼓動2.mp3" id="3_1nt3v"]
 
 [sub_resource type="Animation" id="Animation_vb4ju"]
 length = 0.001
@@ -117,5 +117,5 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_vbqc6")
+stream = ExtResource("3_1nt3v")
 volume_db = -15.0

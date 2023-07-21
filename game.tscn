@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dd6npanx4gou5"]
+[gd_scene load_steps=29 format=3 uid="uid://dd6npanx4gou5"]
 
 [ext_resource type="TileSet" uid="uid://2lq3lykosfwx" path="res://tileset.tres" id="1_7b0gp"]
 [ext_resource type="Script" path="res://game.gd" id="1_ms0dt"]
@@ -11,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://hyisjlhjpgme" path="res://player.tscn" id="4_36mn7"]
 [ext_resource type="PackedScene" uid="uid://cp87el1f7kgw0" path="res://cursor.tscn" id="4_e0175"]
 [ext_resource type="Script" path="res://Spawner.gd" id="6_ls06b"]
-[ext_resource type="AudioStream" uid="uid://d2vlkjynlogry" path="res://assets/DancingOperators_Short(loop)(110).wav" id="9_l83ef"]
-[ext_resource type="AudioStream" uid="uid://divj51j3a1gid" path="res://assets/間抜け5.mp3" id="9_ri0xv"]
-[ext_resource type="AudioStream" uid="uid://ccvihb02p1ywi" path="res://assets/keyboard_1.wav" id="14_a337i"]
+[ext_resource type="AudioStream" uid="uid://divj51j3a1gid" path="res://assets/sound/間抜け5.mp3" id="9_15gpa"]
+[ext_resource type="AudioStream" uid="uid://d2vlkjynlogry" path="res://assets/sound/DancingOperators_Short(loop)(110).wav" id="13_mw1vs"]
+[ext_resource type="AudioStream" uid="uid://ccvihb02p1ywi" path="res://assets/sound/keyboard_1.wav" id="14_rl7u6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4413d"]
 content_margin_left = 1.0
@@ -36,321 +36,6 @@ font_size = 14
 font_color = Color(1, 0.87451, 0.321569, 1)
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_crjna"]
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.301961, 0.301961, 0.301961, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlacePlayerPath/PathFollow2D:progress_ratio")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlacePlayerPath/PathFollow2D/RemoteTransform2D:remote_path")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [NodePath("Player")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Player:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Cursor:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Player:speed")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [100]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer2/Panel/MarginContainer/PlayerFeatures/Speed/HSlider:value")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [300.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer2/Panel:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasLayer2/Panel:modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("CanvasLayer2/Sound:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CanvasLayer2/Sound:modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("CanvasLayer2/MarginContainer:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("CanvasLayer2/MarginContainer:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("CanvasLayer2/End:modulate")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("CanvasLayer2/End/CenterContainer:modulate")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("CanvasLayer2/End:visible")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("CanvasLayer2/End/CenterContainer/VBoxContainer/Label4:modulate")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("CanvasLayer2/End/CenterContainer/VBoxContainer/Label3:modulate")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("CanvasLayer2/End/CenterContainer/VBoxContainer/Label2:modulate")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("CanvasLayer2/End/CenterContainer/VBoxContainer/Label4:visible")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("CanvasLayer2/End/CenterContainer/VBoxContainer/Label3:visible")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("CanvasLayer2/End/ColorRect2:modulate")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("CanvasLayer2/End/CenterContainer2:modulate")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("CanvasLayer2/End/CenterContainer2/RestartText:modulate")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/24/type = "value"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("CanvasLayer2/End/CenterContainer2:visible")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/25/type = "value"
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/path = NodePath("AnimationPlayer:speed_scale")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
 
 [sub_resource type="Animation" id="Animation_m7xmy"]
 resource_name = "colors"
@@ -552,148 +237,6 @@ tracks/9/keys = {
 "values": [{
 "args": [],
 "method": &"play_click"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_yd82p"]
-resource_name = "enable_player_move"
-length = 15.0
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player:speed")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(9.2, 10.3, 10.9, 12.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [100, 600, 600, 200]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer2/Panel/MarginContainer/PlayerFeatures/Flip")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(3.7),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"toggle"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer2/Panel/MarginContainer/PlayerFeatures/Accel")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(6.2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"toggle"
-}]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer2/Panel/MarginContainer/PlayerFeatures/Speed/HSlider:value")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(9.2, 10.3, 10.9, 12.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [100.0, 800.0, 800.0, 300.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer2/Panel:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(2.1, 2.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer2/Panel:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(2.1, 2.7, 13.8, 15),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Keyboard")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(2.7, 7, 11.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Cursor")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(5, 9.2),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"play_click"
-}, {
-"args": [],
-"method": &"play_click"
-}]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath(".")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(15),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"start_enclose_timer"
 }]
 }
 
@@ -1028,46 +571,22 @@ length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlacePlayerPath/PathFollow2D:progress_ratio")
+tracks/0/path = NodePath("PlacePlayerPath/PathFollow2D/RemoteTransform2D:remote_path")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 2, 2.7, 3.3, 4.1, 4.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.7, 0.7, 1.0, 0.7, 0.7, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlacePlayerPath/PathFollow2D/RemoteTransform2D:remote_path")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 2.7, 3.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [NodePath("../../../Player"), NodePath(""), NodePath("../../../Player"), NodePath("")]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Player:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Player")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(3.3, 3.7, 4.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
@@ -1081,13 +600,13 @@ tracks/3/keys = {
 "method": &"enable_input"
 }]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PlacePlayerPath")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlacePlayerPath")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(5),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1095,57 +614,37 @@ tracks/4/keys = {
 "method": &"queue_free"
 }]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Cursor:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cursor:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Cursor")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 2.7, 4.9),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"play_click"
-}, {
-"args": [],
-"method": &"play_click"
-}, {
-"args": [],
-"method": &"enable_catch"
-}]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Player:speed")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Player:speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [100]
 }
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("AnimationPlayer")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(5),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1216,25 +715,13 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_5b5px"]
 resource_name = "start"
 length = 2.0
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.301961, 0.301961, 0.301961, 1), Color(0.0588235, 0.0588235, 0.0941176, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1242,10 +729,22 @@ tracks/1/keys = {
 "method": &"build_first_platform"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cursor:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Cursor:visible")
+tracks/2/path = NodePath("CanvasLayer2/Panel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1257,31 +756,31 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer2/Panel:visible")
+tracks/3/path = NodePath("TileMap:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("TileMap:modulate")
+tracks/4/path = NodePath("CanvasLayer2/Sound:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer2/Sound:visible")
+tracks/5/path = NodePath("CanvasLayer2/MarginContainer:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1293,7 +792,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer2/MarginContainer:visible")
+tracks/6/path = NodePath("CanvasLayer2/End:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1302,25 +801,11 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer2/End:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_onv6d"]
 _data = {
-"RESET": SubResource("Animation_crjna"),
 "colors": SubResource("Animation_m7xmy"),
 "effects": SubResource("Animation_8rlqc"),
-"enable_player_move": SubResource("Animation_yd82p"),
 "end": SubResource("Animation_tvahh"),
 "enemies": SubResource("Animation_ed68o"),
 "health": SubResource("Animation_asplh"),
@@ -1329,31 +814,15 @@ _data = {
 "start": SubResource("Animation_5b5px")
 }
 
-[sub_resource type="Curve2D" id="Curve2D_qawq0"]
-_data = {
-"points": PackedVector2Array(10.821, -16.681, -10.821, 16.681, 379, 4, 131.522, 0, -131.522, 0, 199, 69, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 173)
-}
-point_count = 4
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ms0dt")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.301961, 0.301961, 0.301961, 1)
-
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 
 [node name="Panel" type="PanelContainer" parent="CanvasLayer2"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = ExtResource("2_1p44v")
@@ -1396,10 +865,11 @@ theme_override_styles/slider = SubResource("StyleBoxFlat_4413d")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_omlnh")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_v4iqp")
 max_value = 1000.0
-value = 300.0
+value = 100.0
 
 [node name="Sound" type="PanelContainer" parent="CanvasLayer2"]
 visible = false
+modulate = Color(1, 1, 1, 0)
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("2_hxh6l")
@@ -1574,7 +1044,7 @@ horizontal_alignment = 1
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_7b0gp")
 format = 2
-layer_0/tile_data = PackedInt32Array(393220, 0, 0, 393219, 0, 0, 393218, 0, 0, 393217, 0, 0, 393216, 0, 0, 458751, 0, 0, 458750, 0, 0, 458749, 0, 0, 458748, 0, 0, 458747, 0, 0, 458746, 0, 0, 458745, 0, 0, 458744, 0, 0, 458743, 0, 0, 458742, 0, 0, 458741, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, -458742, 0, 0, -393206, 0, 0, -327670, 0, 0, -262134, 0, 0, -196598, 0, 0, -131062, 0, 0, -65526, 0, 0, 10, 0, 0, 65546, 0, 0, 131082, 0, 0, 196618, 0, 0, 262154, 0, 0, -458741, 0, 0, -393205, 0, 0, -327669, 0, 0, -262133, 0, 0, -196597, 0, 0, -131061, 0, 0, -65525, 0, 0, 11, 0, 0, 65547, 0, 0, 131083, 0, 0, 196619, 0, 0, 262155, 0, 0, 393227, 0, 0, -393228, 0, 0, -393227, 0, 0, -393226, 0, 0, -393225, 0, 0, -393224, 0, 0, -393223, 0, 0, -393222, 0, 0, -393221, 0, 0, -393220, 0, 0, -393219, 0, 0, -393218, 0, 0, -393217, 0, 0, -458752, 0, 0, -458751, 0, 0, -458750, 0, 0, -458749, 0, 0, -458748, 0, 0, -458747, 0, 0, -458746, 0, 0, -458745, 0, 0, -458744, 0, 0, -458743, 0, 0, -327692, 0, 0, -262156, 0, 0, -196620, 0, 0, -131084, 0, 0, -65548, 0, 0, -12, 0, 0, 65524, 0, 0, 131060, 0, 0, 196596, 0, 0, 262132, 0, 0, 327668, 0, 0, 458740, 0, 0, -327691, 0, 0, -262155, 0, 0, -196619, 0, 0, -131083, 0, 0, -65547, 0, 0, -11, 0, 0, 65525, 0, 0, 131061, 0, 0, 196597, 0, 0, 262133, 0, 0, 327669, 0, 0, 393205, 0, 0, 327690, 0, 0, 393204, 0, 0, 327691, 0, 0)
+layer_0/tile_data = PackedInt32Array(458742, 0, 0, 458743, 0, 0, 458744, 0, 0, 458745, 0, 0, 458746, 0, 0, 458747, 0, 0, 458748, 0, 0, 458749, 0, 0, 458750, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0)
 
 [node name="Platform" parent="TileMap" instance=ExtResource("3_xrmi2")]
 position = Vector2(84, 53)
@@ -1595,43 +1065,23 @@ position = Vector2(-48, -20)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 process_mode = 3
-autoplay = "start"
 libraries = {
 "": SubResource("AnimationLibrary_onv6d")
 }
 
 [node name="Gameover" type="AudioStreamPlayer" parent="AnimationPlayer"]
-stream = ExtResource("9_ri0xv")
+stream = ExtResource("9_15gpa")
 volume_db = -10.0
 
 [node name="Player" parent="." instance=ExtResource("4_36mn7")]
-visible = false
-position = Vector2(1.83021, 27.6568)
-speed = 100
+position = Vector2(1.83021, 95)
 
 [node name="DefaultPlayerPos" type="Marker2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, 26)
 
 [node name="Cursor" parent="." node_paths=PackedStringArray("default_player_pos") instance=ExtResource("4_e0175")]
-visible = false
-position = Vector2(384, 35.0002)
+position = Vector2(5, 179)
 default_player_pos = NodePath("../DefaultPlayerPos")
-
-[node name="PlacePlayerPath" type="Path2D" parent="."]
-position = Vector2(0, 27)
-curve = SubResource("Curve2D_qawq0")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="PlacePlayerPath"]
-position = Vector2(379, 4.00015)
-progress = 0.000366211
-rotates = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlacePlayerPath/PathFollow2D"]
-remote_path = NodePath("Player")
-
-[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="PlacePlayerPath/PathFollow2D"]
-position = Vector2(5, 4)
-remote_path = NodePath("../../../Cursor")
 
 [node name="BotSpawnerL" type="Marker2D" parent="."]
 position = Vector2(-184, 96)
@@ -1652,11 +1102,11 @@ script = ExtResource("6_ls06b")
 flip_dir = true
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_l83ef")
+stream = ExtResource("13_mw1vs")
 volume_db = -15.0
 
 [node name="Keyboard" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_a337i")
+stream = ExtResource("14_rl7u6")
 
 [connection signal="toggled" from="CanvasLayer2/Panel/MarginContainer/PlayerFeatures/Flip" to="." method="_on_flip_toggled"]
 [connection signal="toggled" from="CanvasLayer2/Panel/MarginContainer/PlayerFeatures/Accel" to="." method="_on_accel_toggled"]
@@ -1666,8 +1116,6 @@ stream = ExtResource("14_a337i")
 [connection signal="toggled" from="CanvasLayer2/Sound/MarginContainer/PlayerFeatures/Shake" to="." method="_on_shake_toggled"]
 [connection signal="toggled" from="CanvasLayer2/Sound/MarginContainer/PlayerFeatures/Effects" to="." method="_on_effects_toggled"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
-[connection signal="double_jumped" from="Player" to="." method="_on_player_double_jumped"]
 [connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
 [connection signal="lost_health" from="Player" to="." method="_on_player_lost_health"]
 [connection signal="score_updated" from="Player" to="." method="_on_player_score_updated"]
-[connection signal="catch_finish" from="Cursor" to="." method="_on_cursor_catch_finish"]

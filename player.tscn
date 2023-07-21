@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://player.gd" id="1_tmsmg"]
 [ext_resource type="Texture2D" uid="uid://bcpkypbsc4hr1" path="res://assets/Char.png" id="2_7kyg3"]
-[ext_resource type="AudioStream" uid="uid://doqxlf4rq44hl" path="res://assets/ボヨン.mp3" id="3_4wnms"]
-[ext_resource type="AudioStream" uid="uid://ckd6uhnngtljl" path="res://assets/小キック.mp3" id="3_w3vyi"]
-[ext_resource type="AudioStream" uid="uid://ba46da3w0alkw" path="res://assets/ジャンプの着地.mp3" id="4_qda0y"]
+[ext_resource type="AudioStream" uid="uid://doqxlf4rq44hl" path="res://assets/sound/ボヨン.mp3" id="3_fmqjo"]
+[ext_resource type="AudioStream" uid="uid://ba46da3w0alkw" path="res://assets/sound/ジャンプの着地.mp3" id="4_54vhq"]
+[ext_resource type="AudioStream" uid="uid://ckd6uhnngtljl" path="res://assets/sound/小キック.mp3" id="5_w7o6x"]
 [ext_resource type="Script" path="res://Shake.gd" id="6_kej5n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6sf7"]
@@ -172,22 +172,21 @@ offset_bottom = 11.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13.5)
 shape = SubResource("RectangleShape2D_j6sf7")
-disabled = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -21)
 scale = Vector2(0.6, 0.6)
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_4wnms")
+stream = ExtResource("3_fmqjo")
 volume_db = -15.0
 
 [node name="JumpLand" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_qda0y")
+stream = ExtResource("4_54vhq")
 volume_db = -10.0
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_w3vyi")
+stream = ExtResource("5_w7o6x")
 volume_db = -5.0
 
 [node name="Shake" type="Node" parent="."]

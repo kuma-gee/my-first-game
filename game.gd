@@ -54,20 +54,12 @@ func _ready():
 	anim.speed_scale = speed_scale
 	
 	score.modulate = Color.TRANSPARENT
-	map.clear()
 	for child in map.get_children():
 		platform_positions.append(child.global_position)
 		map.remove_child(child)
 
 func _wait(sec):
 	await get_tree().create_timer(sec).timeout
-
-func build_first_platform():
-	await _fill_range(Vector2(-10, 6), Vector2(9, 6))
-	_update_terrain()
-	
-	await _wait(PLACE_PLAYER_DELAY / speed_scale)
-	anim.play("place_player")
 
 func enclose_player():
 	if enclosed: return
@@ -145,15 +137,6 @@ func _update_terrain():
 
 func _on_player_left_screen():
 	cursor.catch_player(player)
-
-
-func _on_cursor_catch_finish():
-	if not enclosed:
-		enclose_player()
-
-
-func _on_player_double_jumped():
-	player.enable_floor_jump()
 
 
 func _on_flip_toggled():
