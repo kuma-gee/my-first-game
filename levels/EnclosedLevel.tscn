@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://4dhxt268mx16"]
+
+[ext_resource type="Script" path="res://levels/EnclosedLevel.gd" id="1_f3uoo"]
+[ext_resource type="PackedScene" uid="uid://begrf0h66a2a7" path="res://platform.tscn" id="1_qrdo4"]
+[ext_resource type="Script" path="res://Spawner.gd" id="3_hod48"]
+[ext_resource type="Script" path="res://levels/FeatureQueue.gd" id="4_w8v2m"]
+[ext_resource type="AudioStream" uid="uid://d2vlkjynlogry" path="res://assets/sound/DancingOperators_Short(loop)(110).wav" id="5_81qy4"]
+
+[node name="EnclosedLevel" type="Node2D"]
+script = ExtResource("1_f3uoo")
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("1_qrdo4")]
+position = Vector2(84, 53)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("1_qrdo4")]
+position = Vector2(105, -51)
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("1_qrdo4")]
+position = Vector2(-103, -73)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("1_qrdo4")]
+position = Vector2(18, 23)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("1_qrdo4")]
+position = Vector2(-48, -20)
+
+[node name="BotSpawnerL" type="Marker2D" parent="."]
+position = Vector2(-184, 96)
+script = ExtResource("3_hod48")
+
+[node name="BotSpawnerR" type="Marker2D" parent="."]
+position = Vector2(187, 96)
+script = ExtResource("3_hod48")
+flip_dir = true
+
+[node name="BotSpawnerL2" type="Marker2D" parent="."]
+position = Vector2(-120, -109)
+script = ExtResource("3_hod48")
+
+[node name="BotSpawnerR2" type="Marker2D" parent="."]
+position = Vector2(119, -110)
+script = ExtResource("3_hod48")
+flip_dir = true
+
+[node name="FeatureQueue" type="Node" parent="."]
+script = ExtResource("4_w8v2m")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_81qy4")
+volume_db = -15.0

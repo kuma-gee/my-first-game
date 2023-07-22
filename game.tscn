@@ -2,9 +2,9 @@
 
 [ext_resource type="TileSet" uid="uid://2lq3lykosfwx" path="res://tileset.tres" id="1_7b0gp"]
 [ext_resource type="Script" path="res://game.gd" id="1_ms0dt"]
+[ext_resource type="Script" path="res://MapCreator.gd" id="3_7ieoa"]
 [ext_resource type="PackedScene" uid="uid://hyisjlhjpgme" path="res://player.tscn" id="4_36mn7"]
 [ext_resource type="PackedScene" uid="uid://cp87el1f7kgw0" path="res://cursor.tscn" id="4_e0175"]
-[ext_resource type="Script" path="res://Spawner.gd" id="6_ls06b"]
 [ext_resource type="AudioStream" uid="uid://divj51j3a1gid" path="res://assets/sound/間抜け5.mp3" id="9_15gpa"]
 [ext_resource type="AudioStream" uid="uid://d2vlkjynlogry" path="res://assets/sound/DancingOperators_Short(loop)(110).wav" id="13_mw1vs"]
 [ext_resource type="AudioStream" uid="uid://ccvihb02p1ywi" path="res://assets/sound/keyboard_1.wav" id="14_rl7u6"]
@@ -460,6 +460,7 @@ script = ExtResource("1_ms0dt")
 tile_set = ExtResource("1_7b0gp")
 format = 2
 layer_0/tile_data = PackedInt32Array(458742, 0, 0, 458743, 0, 0, 458744, 0, 0, 458745, 0, 0, 458746, 0, 0, 458747, 0, 0, 458748, 0, 0, 458749, 0, 0, 458750, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0)
+script = ExtResource("3_7ieoa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -483,24 +484,6 @@ position = Vector2(0, 26)
 position = Vector2(5, 179)
 default_player_pos = NodePath("../DefaultPlayerPos")
 
-[node name="BotSpawnerL" type="Marker2D" parent="."]
-position = Vector2(-184, 96)
-script = ExtResource("6_ls06b")
-
-[node name="BotSpawnerR" type="Marker2D" parent="."]
-position = Vector2(187, 96)
-script = ExtResource("6_ls06b")
-flip_dir = true
-
-[node name="BotSpawnerL2" type="Marker2D" parent="."]
-position = Vector2(-120, -109)
-script = ExtResource("6_ls06b")
-
-[node name="BotSpawnerR2" type="Marker2D" parent="."]
-position = Vector2(119, -110)
-script = ExtResource("6_ls06b")
-flip_dir = true
-
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_mw1vs")
 volume_db = -15.0
@@ -508,7 +491,4 @@ volume_db = -15.0
 [node name="Keyboard" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_rl7u6")
 
-[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="left_screen" from="Player" to="." method="_on_player_left_screen"]
-[connection signal="lost_health" from="Player" to="." method="_on_player_lost_health"]
-[connection signal="score_updated" from="Player" to="." method="_on_player_score_updated"]

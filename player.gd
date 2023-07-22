@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 signal score_updated(score)
@@ -5,6 +6,7 @@ signal score_updated(score)
 signal lost_health(hp)
 signal died
 
+signal hit
 signal left_screen
 
 @export var jump_force := 500
@@ -104,6 +106,8 @@ func _physics_process(delta):
 
 func damage(dir: Vector2):
 	knockback = dir * 60
+	hit.emit()
+	
 	if sound_enabled:
 		hit_sound.playing = true
 	
@@ -147,17 +151,13 @@ func enable_collision():
 func enable_sound():
 	sound_enabled = true
 
-func enable_freeze():
-	freeze_enabled = true
-
 func enable_gravity():
 	gravity_enabled = true
-
-func enable_shake():
-	shake_enabled = true
 	
-func enable_effects():
+func enable_visuals():
 	effects_enabled = true
+	freeze_enabled = true
+	shake_enabled = true
 
 func enable_health():
 	health_enabled = true

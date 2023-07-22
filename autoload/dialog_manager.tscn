@@ -24,3 +24,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/CenterContainer"]
 layout_mode = 2
 text = "_PLACEHOLDER_"
+
+[node name="FinishTimer" type="Timer" parent="."]
+wait_time = 4.0
+
+[connection signal="timeout" from="FinishTimer" to="." method="_on_finish_timer_timeout"]

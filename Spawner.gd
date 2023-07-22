@@ -43,12 +43,11 @@ func _spawn_score():
 	score.global_position = global_position
 	get_tree().current_scene.add_child(score)
 
-func enable_colors():
+func enable_visuals():
 	colors_enabled = true
 	for enem in get_tree().get_nodes_in_group("enemy"):
 		enem.colors_enabled = colors_enabled
-
-func enable_effect():
+		
 	effect_enabled = true
 	for enem in get_tree().get_nodes_in_group("enemy"):
 		enem.effect_enabled = effect_enabled
