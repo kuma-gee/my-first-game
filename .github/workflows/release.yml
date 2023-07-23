@@ -40,6 +40,7 @@ jobs:
         run: butler push build/$CHANNEL $USER/$GAME:$CHANNEL --userversion $GITHUB_REF_NAME
 
       - name: Package builds
+        if: env.CHANNEL != 'mac'
         run: |
           cd build
           mv $CHANNEL $GAME && zip -r $GAME-$CHANNEL.zip $GAME
