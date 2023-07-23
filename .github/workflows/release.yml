@@ -60,8 +60,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: echo "latest_tag=$(git tag | sort --version-sort | tail -n1)" >> $GITHUB_ENV
-      - run: echo "prev_tag=$(git tag | sort --version-sort | tail -n2 | head -1)" >> $GITHUB_ENV
+      - run: echo "latest_tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+      - run: echo "prev_tag=$(gh release list | grep Latest | awk '{print $3}')" >> $GITHUB_ENV
       - run: npm ci && npm run changelog -- -t ${{env.prev_tag}}..${{env.latest_tag}}
       - uses: actions/download-artifact@v3
         with:
