@@ -22,6 +22,12 @@ jobs:
         with:
           lfs: true
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      
+      - run: npm ci && npm run changelog
+
       - name: Setup Templates
         run: ./scripts/prepare-templates.sh $GODOT_VERSION
 
@@ -62,6 +68,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
+          body_path: CHANGELOG.md
           prerelease: false
           files: |
             **/*.zip
