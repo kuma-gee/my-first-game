@@ -14,7 +14,7 @@ jobs:
       matrix:
         channel: [win, linux, web, macOS]
     env:
-      GAME: lost-library
+      GAME: this-is-a-game
       CHANNEL: ${{matrix.channel}}
       GODOT_VERSION: 4.1
     steps:
