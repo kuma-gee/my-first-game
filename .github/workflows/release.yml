@@ -13,6 +13,7 @@ jobs:
     env:
       GAME: this-is-a-game
       CHANNELS: "win linux web macOS"
+      GODOT_VERSION: 4.1
     steps:
       - uses: actions/checkout@v3
         with:
@@ -22,6 +23,8 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
+
+      - run: ./scripts/prepare-template.sh
 
       - name: Build & Publish
         shell: bash
