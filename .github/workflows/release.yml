@@ -62,7 +62,7 @@ jobs:
           node-version: 18
       - run: echo "latest_tag=$(git tag | sort --version-sort | tail -n1)" >> $GITHUB_ENV
       - run: echo "prev_tag=$(git tag | sort --version-sort | tail -n2 | head -1)" >> $GITHUB_ENV
-      - run: npm ci && npm run changelog -- -t ${{env.latest_tag}}..${{env.prev_tag}}
+      - run: npm ci && npm run changelog -- -t ${{env.prev_tag}}..${{env.latest_tag}}
       - uses: actions/download-artifact@v3
         with:
           name: release
