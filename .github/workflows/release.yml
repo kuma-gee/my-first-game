@@ -10,24 +10,57 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: barichello/godot-ci:4.1
+    strategy:
+      matrix:
+        channel: [win, linux, web, macOS]
     env:
-      GAME: this-is-a-game
-      CHANNELS: "win linux web macOS"
-      GODOT_VERSION: 4.1
+      GAME: lost-library
+      CHANNEL: ${{matrix.channel}}
     steps:
       - uses: actions/checkout@v3
         with:
           lfs: true
-          submodules: true
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: npm ci
 
-      - run: ./scripts/prepare-template.sh
+      - name: Setup Templates
+        run: ./scripts/prepare-templates.sh
 
-      - name: Build & Publish
+      # - name: Prepare Build
+      #   run: ./addons/debug/prepare-build.sh $GITHUB_REF_NAME
+
+      - name: Build
+        run: ./scripts/ci/build-channel.sh $CHANNEL
+
+      - name: Publish Itch
+        if: env.BUTLER_API_KEY && env.USER && env.GAME && !contains(github.ref, '-rc')
         shell: bash
         env:
           BUTLER_API_KEY: ${{secrets.BUTLER_API_KEY}}
-        run: ./scripts/publish.sh $GITHUB_REF_NAME $CHANNELS
+          USER: ${{secrets.ITCHIO_USER}}
+        run: butler push build/$CHANNEL $USER/$GAME:$CHANNEL --userversion $GITHUB_REF_NAME
+
+      - name: Package builds
+        run: |
+          cd build
+          mv $CHANNEL $GAME && zip -r $GAME-$CHANNEL.zip $GAME
+
+      # Upload exported build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: release
+          path: build/**/*.zip
+
+  github-release:
+    runs-on: ubuntu-latest
+    needs: release
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: release
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          prerelease: false
+          files: |
+            **/*.zip
+            **/*.aab
