@@ -5,7 +5,7 @@
 # github-cli
 # butler
 
-GAME="my-first-game"
+GAME="this-is-a-game"
 VERSION="$1"
 
 ARGS=("$@")
@@ -22,11 +22,8 @@ CHANGELOG=""
 
 generate_changelog() {
     echo "Generating changelog"
-    touch package.json
-    echo "{}" > package.json
     changelog -p -t $LAST_TAG -f CHANGELOG.md
     CHANGELOG=$(cat CHANGELOG.md)
-    rm package.json
     rm CHANGELOG.md
 }
 

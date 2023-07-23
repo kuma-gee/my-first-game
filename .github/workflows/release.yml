@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.1
+    env:
+      GAME: this-is-a-game
+      CHANNELS: "win linux web macOS"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          lfs: true
+          submodules: true
+      - uses: actions/setup-node@v3
+      - run: npm ci
+
+      - name: Build & Publish
+        env:
+          BUTLER_API_KEY: ${{secrets.BUTLER_API_KEY}}
+        run: ./scripts/publish.sh $GITHUB_REF_NAME $CHANNELS
