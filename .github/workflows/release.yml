@@ -24,6 +24,7 @@ jobs:
       - run: npm ci
 
       - name: Build & Publish
+        shell: bash
         env:
           BUTLER_API_KEY: ${{secrets.BUTLER_API_KEY}}
         run: ./scripts/publish.sh $GITHUB_REF_NAME $CHANNELS
